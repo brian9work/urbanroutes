@@ -1,26 +1,26 @@
 
-# Base de Datos SQL: Urban Routes
+# 📊 Base de Datos SQL: Urban Routes
 
 Este documento describe la estructura y el funcionamiento de la base de datos **Urban Routes**, diseñada para gestionar información relacionada con rutas de transporte, paradas, usuarios, comentarios y calificaciones.
 
 ---
 
-## Esquema de la Base de Datos
+## 🗂️ Esquema de la Base de Datos
 
 La base de datos está compuesta por varias tablas que se relacionan entre sí para gestionar la información de transporte, usuarios y ubicaciones. A continuación, se detalla cada tabla y su propósito.
 
 ---
 
-### Tablas Principales
+## 📋 Tablas Principales
 
-#### 1. **`cat_type_of_transport`**
+### 🚍 `cat_type_of_transport`
    - **Descripción**: Almacena los tipos de transporte disponibles (autobús, tren, etc.).
    - **Campos**:
      - `id`: Identificador único (clave primaria).
      - `name`: Nombre del tipo de transporte.
      - `imagen`: Ruta de la imagen asociada al tipo de transporte.
 
-#### 2. **`cat_line_of_transport`**
+### 🚇 `cat_line_of_transport`
    - **Descripción**: Contiene las líneas de transporte disponibles.
    - **Campos**:
      - `id`: Identificador único (clave primaria).
@@ -28,13 +28,13 @@ La base de datos está compuesta por varias tablas que se relacionan entre sí p
      - `complete_name`: Nombre completo de la línea.
      - `imagen`: Ruta de la imagen asociada a la línea.
 
-#### 3. **`cat_municipalities`**
+### 🌍 `cat_municipalities`
    - **Descripción**: Almacena los municipios o áreas geográficas.
    - **Campos**:
      - `id`: Identificador único (clave primaria).
      - `name`: Nombre del municipio.
 
-#### 4. **`cat_faculty`**
+### 🎓 `cat_faculty`
    - **Descripción**: Contiene las facultades o instituciones educativas.
    - **Campos**:
      - `id`: Identificador único (clave primaria).
@@ -44,7 +44,7 @@ La base de datos está compuesta por varias tablas que se relacionan entre sí p
      - `longitude`: Longitud de la ubicación de la facultad.
      - `is_active`: Estado de la facultad (`1` para activa, `0` para inactiva).
 
-#### 5. **`cat_degree`**
+### 📚 `cat_degree`
    - **Descripción**: Almacena los grados o carreras asociadas a una facultad.
    - **Campos**:
      - `id`: Identificador único (clave primaria).
@@ -52,7 +52,7 @@ La base de datos está compuesta por varias tablas que se relacionan entre sí p
      - `name`: Nombre del grado o carrera.
      - `is_active`: Estado del grado (`1` para activo, `0` para inactivo).
 
-#### 6. **`transport`**
+### 🚌 `transport`
    - **Descripción**: Contiene la información de los transportes disponibles.
    - **Campos**:
      - `id`: Identificador único (clave primaria).
@@ -64,7 +64,7 @@ La base de datos está compuesta por varias tablas que se relacionan entre sí p
      - `origin`: Punto de origen del transporte.
      - `destination`: Punto de destino del transporte.
 
-#### 7. **`user`**
+### 👥 `user`
    - **Descripción**: Almacena la información de los usuarios registrados.
    - **Campos**:
      - `id`: Identificador único (clave primaria).
@@ -77,7 +77,7 @@ La base de datos está compuesta por varias tablas que se relacionan entre sí p
      - `created_at`: Fecha de creación del registro.
      - `updated_at`: Fecha de última actualización del registro.
 
-#### 8. **`commentary`**
+### 💬 `commentary`
    - **Descripción**: Almacena los comentarios realizados por los usuarios sobre los transportes.
    - **Campos**:
      - `id`: Identificador único (clave primaria).
@@ -88,7 +88,7 @@ La base de datos está compuesta por varias tablas que se relacionan entre sí p
      - `created_at`: Fecha de creación del comentario.
      - `updated_at`: Fecha de última actualización del comentario.
 
-#### 9. **`calification`**
+### ⭐ `calification`
    - **Descripción**: Almacena las calificaciones que los usuarios dan a los transportes.
    - **Campos**:
      - `id_user`: Clave foránea que referencia a `user`.
@@ -97,7 +97,7 @@ La base de datos está compuesta por varias tablas que se relacionan entre sí p
      - `created_at`: Fecha de creación de la calificación.
      - `updated_at`: Fecha de última actualización de la calificación.
 
-#### 10. **`stop`**
+### 🚏 `stop`
    - **Descripción**: Contiene las paradas de transporte disponibles.
    - **Campos**:
      - `id`: Identificador único (clave primaria).
@@ -107,14 +107,14 @@ La base de datos está compuesta por varias tablas que se relacionan entre sí p
      - `name`: Nombre de la parada.
      - `imagen`: Ruta de la imagen asociada a la parada.
 
-#### 11. **`transport_stop`**
+#### 🚍 **`transport_stop`**
    - **Descripción**: Relaciona los transportes con las paradas.
    - **Campos**:
      - `id`: Identificador único (clave primaria).
      - `id_transport`: Clave foránea que referencia a `transport`.
      - `id_stop`: Clave foránea que referencia a `stop`.
 
-#### 12. **`route_coordinates`**
+### 🛤️ `route_coordinates`
    - **Descripción**: Almacena las coordenadas de las rutas de transporte.
    - **Campos**:
      - `id`: Identificador único (clave primaria).
@@ -122,7 +122,7 @@ La base de datos está compuesta por varias tablas que se relacionan entre sí p
      - `latitude`: Latitud de la coordenada.
      - `longitude`: Longitud de la coordenada.
 
-#### 13. **`stop_routes`**
+### 🔄 `stop_routes`
    - **Descripción**: Define las rutas entre paradas, incluyendo distancia, tiempo y precio.
    - **Campos**:
      - `id`: Identificador único (clave primaria).
@@ -134,19 +134,19 @@ La base de datos está compuesta por varias tablas que se relacionan entre sí p
 
 ---
 
-## Relaciones entre Tablas
+## 🔗 Relaciones entre Tablas
 
-- **`cat_degree`** está relacionada con **`cat_faculty`** a través de `id_faculty`.
-- **`transport`** está relacionada con **`cat_type_of_transport`** y **`cat_line_of_transport`** a través de `id_type_of_transport` e `id_line_of_transport`, respectivamente.
-- **`commentary`** y **`calification`** están relacionadas con **`user`** y **`transport`** a través de `id_user` e `id_transport`.
-- **`stop`** está relacionada con **`cat_municipalities`** a través de `id_municipalities`.
-- **`transport_stop`** relaciona **`transport`** y **`stop`**.
-- **`route_coordinates`** está relacionada con **`transport`** a través de `id_transport`.
-- **`stop_routes`** relaciona dos paradas (`stop_id_from` y `stop_id_to`).
+✅ **`cat_degree`** ➔ **`cat_faculty`** mediante `id_faculty`.
+✅ **`transport`** ➔ **`cat_type_of_transport`** y **`cat_line_of_transport`** mediante `id_type_of_transport` e `id_line_of_transport`, respectivamente.
+✅ **`commentary`** y **`calification`** ➔ **`user`** y **`transport`** mediante `id_user` e `id_transport`.
+✅ **`stop`** ➔ **`cat_municipalities`** mediante `id_municipalities`.
+✅ **`transport_stop`** relaciona **`transport`** y **`stop`**.
+✅ **`route_coordinates`** ➔ **`transport`** mediante `id_transport`.
+✅ **`stop_routes`** relaciona dos paradas (`stop_id_from` y `stop_id_to`).
 
 ---
 
-## Consideraciones
+## ⚠️ Consideraciones
 - **Integridad Referencial:** Todas las claves foráneas están configuradas con ON DELETE CASCADE para mantener la integridad de los datos.
 - **Índices Únicos:** Se han definido índices únicos en campos como id, email (en user), y otros para evitar duplicados.
 - **Validación de Datos:** Se utilizan restricciones como CHECK para validar valores (por ejemplo, calificaciones entre 1 y 5).
