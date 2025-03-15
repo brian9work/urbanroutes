@@ -1,0 +1,5 @@
+Prioridad
+1: Actualizar ahora si no no dejara abrir la app
+2: Se muestra un mensaje de actualizacion cada que se habre la app
+3: Solo se muestra una vez el mensaje de actualizacion
+4: No muestra nd que se necesita una actualizacion
