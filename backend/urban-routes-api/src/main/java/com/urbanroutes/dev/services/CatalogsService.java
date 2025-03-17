@@ -1,7 +1,7 @@
-package com.faculink.dev.services;
+package com.urbanroutes.dev.services;
 
-import com.faculink.dev.models.catalogs.*;
-import com.faculink.dev.repositories.catalogs.*;
+import com.urbanroutes.dev.models.catalogs.*;
+import com.urbanroutes.dev.repositories.catalogs.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
