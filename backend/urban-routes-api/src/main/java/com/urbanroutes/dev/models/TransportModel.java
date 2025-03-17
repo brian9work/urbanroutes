@@ -1,6 +1,6 @@
 package com.urbanroutes.dev.models;
-import com.faculink.dev.models.catalogs.CatLineOfTransportModel;
-import com.faculink.dev.models.catalogs.CatTypeOfTransportModel;
+import com.urbanroutes.dev.models.catalogs.CatLineOfTransportModel;
+import com.urbanroutes.dev.models.catalogs.CatTypeOfTransportModel;
 import jakarta.persistence.*;
 
 @Entity

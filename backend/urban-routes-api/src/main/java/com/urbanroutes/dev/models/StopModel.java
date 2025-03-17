@@ -1,6 +1,6 @@
 package com.urbanroutes.dev.models;
 
-import com.faculink.dev.models.catalogs.CatMunicipalitiesModel;
+import com.urbanroutes.dev.models.catalogs.CatMunicipalitiesModel;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "stop")
