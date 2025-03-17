@@ -1,7 +1,6 @@
-package com.faculink.dev.repositories;
+package com.urbanroutes.dev.repositories;
 
-import com.faculink.dev.models.RouteCoordinatesModel;
-import com.faculink.dev.models.StopModel;
+import com.urbanroutes.dev.models.StopModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,7 +1,6 @@
-package com.faculink.dev.repositories;
+package com.urbanroutes.dev.repositories;
 
-import com.faculink.dev.models.TransportModel;
-import com.faculink.dev.models.UserModel;
+import com.urbanroutes.dev.models.TransportModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,14 +1,12 @@
-package com.faculink.dev.repositories;
+package com.urbanroutes.dev.repositories;
 
-import com.faculink.dev.models.*;
-import com.faculink.dev.models.TransportStopModel;
+import com.urbanroutes.dev.models.*;
+import com.urbanroutes.dev.models.TransportStopModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.lang.reflect.Array;
-import java.util.Objects;
 import java.util.List;
 
 @Repository
