@@ -1,4 +1,4 @@
-package com.faculink.dev.models;
+package com.urbanroutes.dev.models;
 import com.faculink.dev.models.catalogs.CatLineOfTransportModel;
 import com.faculink.dev.models.catalogs.CatTypeOfTransportModel;
 import jakarta.persistence.*;
