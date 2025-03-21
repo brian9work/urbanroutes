@@ -1,6 +1,6 @@
-package com.faculink.dev.models;
+package com.api.faculink.models;
 
-import com.faculink.dev.models.catalogs.CatMunicipalitiesModel;
+import com.api.faculink.models.catalogs.CatMunicipalitiesModel;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "stop")

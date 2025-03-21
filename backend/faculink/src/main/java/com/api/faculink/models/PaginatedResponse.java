@@ -1,4 +1,4 @@
-package com.faculink.dev.models;
+package com.api.faculink.models;
 
 import org.springframework.data.domain.Page;
 

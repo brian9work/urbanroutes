@@ -1,6 +1,6 @@
-package com.faculink.dev.models;
-import com.faculink.dev.models.catalogs.CatLineOfTransportModel;
-import com.faculink.dev.models.catalogs.CatTypeOfTransportModel;
+package com.api.faculink.models;
+import com.api.faculink.models.catalogs.CatLineOfTransportModel;
+import com.api.faculink.models.catalogs.CatTypeOfTransportModel;
 import jakarta.persistence.*;
 
 @Entity
