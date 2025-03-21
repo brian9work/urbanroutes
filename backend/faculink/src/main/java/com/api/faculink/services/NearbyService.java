@@ -1,10 +1,15 @@
-package com.faculink.dev.services;
+package com.api.faculink.services;
 
-import com.faculink.dev.dto.InfoDestinationDTO;
-import com.faculink.dev.dto.NearbyStopDTO;
-import com.faculink.dev.dto.TransportDTO;
-import com.faculink.dev.models.*;
-import com.faculink.dev.repositories.*;
+import com.api.faculink.dto.InfoDestinationDTO;
+import com.api.faculink.dto.NearbyStopDTO;
+import com.api.faculink.dto.TransportDTO;
+import com.api.faculink.models.TransportStopModel;
+import com.api.faculink.repositories.IRouteCoordinatesRepository;
+import com.api.faculink.repositories.IStopRepository;
+import com.api.faculink.repositories.IStopRoutesRepository;
+import com.api.faculink.repositories.ITransportStopRepository;
+import com.api.faculink.models.*;
+import com.api.faculink.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

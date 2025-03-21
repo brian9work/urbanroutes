@@ -1,7 +1,7 @@
-package com.faculink.dev.services;
+package com.api.faculink.services;
 
-import com.faculink.dev.models.catalogs.*;
-import com.faculink.dev.repositories.catalogs.*;
+import com.api.faculink.models.catalogs.*;
+import com.api.faculink.repositories.catalogs.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

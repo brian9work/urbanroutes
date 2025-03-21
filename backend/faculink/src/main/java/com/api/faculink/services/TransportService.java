@@ -1,15 +1,17 @@
-package com.faculink.dev.services;
+package com.api.faculink.services;
 
-import com.faculink.dev.dto.ExtraInfoStopRoutesDTO;
-import com.faculink.dev.dto.RouteCoordinatesDTO;
-import com.faculink.dev.dto.TransportDTO;
-import com.faculink.dev.models.RouteCoordinatesModel;
-import com.faculink.dev.models.StopRouteModel;
-import com.faculink.dev.models.TransportModel;
-import com.faculink.dev.repositories.IRouteCoordinatesRepository;
-import com.faculink.dev.repositories.IStopRoutesRepository;
-import com.faculink.dev.repositories.ITransportRepository;
-import com.faculink.dev.repositories.ITransportStopRepository;
+import com.api.faculink.dto.ExtraInfoStopRoutesDTO;
+import com.api.faculink.dto.RouteCoordinatesDTO;
+import com.api.faculink.dto.TransportDTO;
+import com.api.faculink.dto.TransportStopDTO;
+import com.api.faculink.models.RouteCoordinatesModel;
+import com.api.faculink.models.StopRouteModel;
+import com.api.faculink.models.TransportModel;
+import com.api.faculink.models.TransportStopModel;
+import com.api.faculink.repositories.IRouteCoordinatesRepository;
+import com.api.faculink.repositories.IStopRoutesRepository;
+import com.api.faculink.repositories.ITransportRepository;
+import com.api.faculink.repositories.ITransportStopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -115,6 +117,24 @@ public class TransportService {
             stopsRouteInfoEnd.add(newstopsRouteInfo);
         }
         transportDTOLocal.setTrayectoDestination(stopsRouteInfoEnd);
+
+
+
+        //Obtener todas las paradas del transporte
+        List<TransportStopModel> transportStopModels = transportStopRepository.getByTransports(transportDTOLocal.getTransportId());
+        List<TransportStopDTO> transportComponent = new ArrayList<>();
+        for (TransportStopModel transportStopInd : transportStopModels) {
+            TransportStopDTO transportLocal = new TransportStopDTO();
+
+            transportLocal.setName(transportStopInd.getStopModel().getName());
+            transportLocal.setImagen(transportStopInd.getStopModel().getImagen());
+            transportLocal.setLatitude(transportStopInd.getStopModel().getLatitude());
+            transportLocal.setLongitude(transportStopInd.getStopModel().getLongitude());
+            transportLocal.getStopId(transportStopInd.getStopModel().getId());
+
+            transportComponent.add(transportLocal);
+        }
+        transportDTOLocal.setTransportStops(transportComponent);
 
 
 
