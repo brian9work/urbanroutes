@@ -1,4 +1,4 @@
-package com.faculink.dev.dto;
+package com.api.faculink.dto;
 
 import java.util.List;
 

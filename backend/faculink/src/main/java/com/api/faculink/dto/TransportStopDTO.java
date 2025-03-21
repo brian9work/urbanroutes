@@ -1,4 +1,4 @@
-package com.faculink.dev.dto;
+package com.api.faculink.dto;
 
 public class TransportStopDTO {
     Long stopId;
@@ -7,7 +7,7 @@ public class TransportStopDTO {
     String name;
     String imagen;
 
-    public Long getStopId() {
+    public Long getStopId(Long id) {
         return stopId;
     }
 
