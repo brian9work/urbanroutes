@@ -1,4 +1,4 @@
-package com.faculink.dev;
+package com.api.faculink;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
