@@ -1,7 +1,7 @@
-package com.faculink.dev.controller;
+package com.api.faculink.controller;
 
-import com.faculink.dev.models.catalogs.*;
-import com.faculink.dev.services.CatalogsService;
+import com.api.faculink.models.catalogs.*;
+import com.api.faculink.services.CatalogsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

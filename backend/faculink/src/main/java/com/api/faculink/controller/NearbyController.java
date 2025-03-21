@@ -1,8 +1,8 @@
-package com.faculink.dev.controller;
+package com.api.faculink.controller;
 
-import com.faculink.dev.dto.NearbyStopDTO;
-import com.faculink.dev.dto.TransportDTO;
-import com.faculink.dev.services.NearbyService;
+import com.api.faculink.dto.NearbyStopDTO;
+import com.api.faculink.dto.TransportDTO;
+import com.api.faculink.services.NearbyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
