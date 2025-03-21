@@ -1,7 +1,7 @@
-package com.faculink.dev.repositories;
+package com.api.faculink.repositories;
 
-import com.faculink.dev.models.*;
-import com.faculink.dev.models.TransportStopModel;
+import com.api.faculink.models.*;
+import com.api.faculink.models.TransportStopModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
