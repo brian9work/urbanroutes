@@ -1,15 +1,14 @@
-package com.faculink.dev.models.catalogs;
+package com.api.faculink.models.catalogs;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "cat_type_of_transport")
-public class CatTypeOfTransportModel {
+@Table(name = "cat_municipalities")
+public class CatMunicipalitiesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
     private String name;
-    private String imagen;
 
     public Long getId() {
         return id;
@@ -25,13 +24,5 @@ public class CatTypeOfTransportModel {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
     }
 }

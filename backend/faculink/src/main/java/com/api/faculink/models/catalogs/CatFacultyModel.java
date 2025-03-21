@@ -1,4 +1,4 @@
-package com.faculink.dev.models.catalogs;
+package com.api.faculink.models.catalogs;
 
 import jakarta.persistence.*;
 
