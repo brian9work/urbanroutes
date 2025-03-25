@@ -1,6 +1,5 @@
-import { SERVER_URL } from '../config'
-const originStatic = SERVER_URL;
-
+import { config } from '../config'
+const originStatic = config.SERVER_URL;
 
 export const actualVersion = "0.1.0";
 
@@ -8,7 +7,7 @@ const Api ={
     control: {
         version: () =>  `${originStatic}/version`,
         verifyVersion: () =>  `${originStatic}/version/${actualVersion}`,
-        verifyVersion: () =>  `https://brian9work.github.io/static/Api/version.json`,
+        verifyVersion: () =>  `https://brian9work.github.io/static/Api/version4.json`,
     },
     nearby: {
         stops: (latitude, longitude, distance) => {
@@ -16,6 +15,16 @@ const Api ={
         },
         selectedStop: (idStop) => {
             return `${originStatic}/nearby/${idStop}`;
+        }
+    },
+    transport: {
+        getTransport : (idTransport) => {
+            return `${originStatic}/transport/${idTransport}`;
+        }
+    },
+    catalogs: {
+        getFaculties: () => {
+            return `${originStatic}/cat/faculty`;
         }
     }
 }
