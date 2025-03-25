@@ -16,6 +16,9 @@ public interface IStopRoutesRepository extends JpaRepository<StopRouteModel, Lon
     @Query("SELECT sr FROM StopRouteModel sr WHERE sr.stopTo.id = :idRoute ")
     List<StopRouteModel> findByStopTo(@Param("idRoute") Long idRoute);
 
+    @Query("SELECT sr FROM StopRouteModel sr WHERE sr.stopFrom.id = :stopFrom AND sr.stopTo.id = :stopTo ")
+    List<StopRouteModel> getByStopFromAndStopTo(Long stopFrom, Long stopTo);
+
     @Query("SELECT sr FROM StopRouteModel sr WHERE sr.stopFrom.id = :idStopFrom AND " +
             "sr.stopTo.id BETWEEN :idFirstStop AND :idEndStop " +
             " ORDER BY sr.id ASC")
