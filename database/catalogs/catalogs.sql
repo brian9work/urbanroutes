@@ -127,7 +127,7 @@ INSERT INTO `cat_faculty` (`id`, `acronym`, `name`, `latitude`, `longitude`, `is
     (1, 'FA', 'Facultad de Agrobiología', '0', '0', 0),
     (2, 'FCS', 'Facultad de Ciencias de la Salud', '0', '0', 0),
     (3, 'FO', 'Facultad de Odontología', '0', '0', 0),
-    (4, 'FCBIyT', 'Facultad de Ciencias Básicas Ingeniería y Tecnología', '0', '0', 1),
+    (4, 'FCBIyT', 'Facultad de Ciencias Básicas Ingeniería y Tecnología', '19.417996111693196', '-98.12705375871312', 1),
     (5, 'FCEA', 'Facultad de Ciencias Económico Administrativas', '0', '0', 0),
     (6, 'FDCPC', 'Facultad de Derecho, Ciencias Políticas y Criminología', '0', '0', 0),
     (7, 'FTSSyP', 'Facultad de Trabajo Social, Sociología y Psicología', '0', '0', 0),
