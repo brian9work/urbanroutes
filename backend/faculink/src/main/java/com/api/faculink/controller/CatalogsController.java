@@ -15,28 +15,28 @@ public class CatalogsController {
     @Autowired
     private CatalogsService catalogsService;
 
-    @GetMapping("/degree")
-    public List<CatDegreeModel> getDegree() {
-        return this.catalogsService.getAllDegree();
-    }
+//    @GetMapping("/degree")
+//    public List<CatDegreeModel> getDegree() {
+//        return this.catalogsService.getAllDegree();
+//    }
 
     @GetMapping("/faculty")
     public List<CatFacultyModel> getFaculty() {
-        return this.catalogsService.getAllFaculty();
+        return this.catalogsService.getAllFacultyActive();
     }
 
-    @GetMapping("/municipality")
-    public List<CatMunicipalitiesModel> getMunicipalities() {
-        return this.catalogsService.getAllMunicipalities();
-    }
-
-    @GetMapping("/typeTransport")
-    public List<CatTypeOfTransportModel> getTypeOfTransport() {
-        return this.catalogsService.getAllTypeOfTransport();
-    }
-
-    @GetMapping("/lineTransport")
-    public List<CatLineOfTransportModel> getLineOfTransport() {
-        return this.catalogsService.getAllLineOfTransport();
-    }
+//    @GetMapping("/municipality")
+//    public List<CatMunicipalitiesModel> getMunicipalities() {
+//        return this.catalogsService.getAllMunicipalities();
+//    }
+//
+//    @GetMapping("/typeTransport")
+//    public List<CatTypeOfTransportModel> getTypeOfTransport() {
+//        return this.catalogsService.getAllTypeOfTransport();
+//    }
+//
+//    @GetMapping("/lineTransport")
+//    public List<CatLineOfTransportModel> getLineOfTransport() {
+//        return this.catalogsService.getAllLineOfTransport();
+//    }
 }
