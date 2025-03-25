@@ -22,6 +22,7 @@ public class TransportDTO {
     List<ExtraInfoStopRoutesDTO> trayectoDestination;
     List<RouteCoordinatesDTO> route;
     List<TransportStopDTO> transportStops;
+    List<StopInfoBasicDTO> allStops;
 
     public Long getTransportId() {
         return transportId;
@@ -173,5 +174,13 @@ public class TransportDTO {
 
     public void setTransportStops(List<TransportStopDTO> transportStops) {
         this.transportStops = transportStops;
+    }
+
+    public List<StopInfoBasicDTO> getAllStops() {
+        return allStops;
+    }
+
+    public void setAllStops(List<StopInfoBasicDTO> allStops) {
+        this.allStops = allStops;
     }
 }

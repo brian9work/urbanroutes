@@ -7,7 +7,7 @@ public class TransportStopDTO {
     String name;
     String imagen;
 
-    public Long getStopId(Long id) {
+    public Long getStopId() {
         return stopId;
     }
 
