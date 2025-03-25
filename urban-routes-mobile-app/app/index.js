@@ -10,7 +10,7 @@ import { useRouter } from 'expo-router';
 export default function index() {
     const router = useRouter();
     const [response, setResponse] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     
     const verifyVersion = async () => {
         const response = await GET(Api.control.verifyVersion(), "json")
