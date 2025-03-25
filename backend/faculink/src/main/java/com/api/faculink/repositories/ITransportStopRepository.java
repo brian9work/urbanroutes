@@ -26,6 +26,10 @@ public interface ITransportStopRepository extends JpaRepository<TransportStopMod
             @Param("idFirstStop") Long idFirstStop,
             @Param("idEndStop") Long idEndStop
     );
+//    SELECT * FROM transport_stop ts
+//    INNER JOIN stop s ON s.id = ts.id_stop
+//    INNER JOIN transport t ON t.id = ts.id_transport
+//    WHERE ts.id_stop BETWEEN 1 AND 7;
 
     @Query("SELECT ts, s FROM TransportStopModel ts " +
             "JOIN StopModel s ON ts.stopModel.id=s.id " +

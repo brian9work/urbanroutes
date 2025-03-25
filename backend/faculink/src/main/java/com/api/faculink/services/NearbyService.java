@@ -95,11 +95,11 @@ public class NearbyService {
             if(!routesStopListFirst.isEmpty()){
                 Object[] routesStopFirst = routesStopListFirst.get(0);
                 destinationsInfoOrigin.setId(String.valueOf((int) routesStopFirst[0]));
-                destinationsInfoOrigin.setDistance(String.valueOf((int) routesStopFirst[1]));
-                destinationsInfoOrigin.setTime(String.valueOf((int) routesStopFirst[2]));
-                destinationsInfoOrigin.setPrice(String.valueOf((float) routesStopFirst[3]));
+                destinationsInfoOrigin.setDistance(String.valueOf((int) routesStopFirst[2]));
+                destinationsInfoOrigin.setTime(String.valueOf((int) routesStopFirst[3]));
+                destinationsInfoOrigin.setPrice(String.valueOf((float) routesStopFirst[4]));
                 destinationsInfoOrigin.setOrigin((String) routesStopFirst[5]);
-                destinationsInfoOrigin.setDestination((String) routesStopFirst[4]);
+                destinationsInfoOrigin.setDestination((String) routesStopFirst[6]);
             }
             transportDTOLocal.setTrayectoInfoOrigin(destinationsInfoOrigin);
 
@@ -113,12 +113,12 @@ public class NearbyService {
             InfoDestinationDTO destinationsInfoEnd = new InfoDestinationDTO();
             if(!routesStopListEnd.isEmpty()){
                 Object[] routesStopEnd = routesStopListEnd.get(0);
-                destinationsInfoEnd.setId(String.valueOf((int) routesStopEnd[0]));
-                destinationsInfoEnd.setDistance(String.valueOf((int) routesStopEnd[1]));
-                destinationsInfoEnd.setTime(String.valueOf((int) routesStopEnd[2]));
-                destinationsInfoEnd.setPrice(String.valueOf((float) routesStopEnd[3]));
-                destinationsInfoEnd.setOrigin((String) routesStopEnd[4]);
-                destinationsInfoEnd.setDestination((String) routesStopEnd[5]);
+                destinationsInfoEnd.setId(String.valueOf((int) routesStopEnd[1]));
+                destinationsInfoEnd.setDistance(String.valueOf((int) routesStopEnd[2]));
+                destinationsInfoEnd.setTime(String.valueOf((int) routesStopEnd[3]));
+                destinationsInfoEnd.setPrice(String.valueOf((float) routesStopEnd[4]));
+                destinationsInfoEnd.setOrigin((String) routesStopEnd[5]);
+                destinationsInfoEnd.setDestination((String) routesStopEnd[6]);
             }
             transportDTOLocal.setTrayectoInfoDestination(destinationsInfoEnd);
 

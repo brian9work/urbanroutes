@@ -36,7 +36,8 @@ public interface IStopRoutesRepository extends JpaRepository<StopRouteModel, Lon
             @Param("idEndStop") Long idEndStop
     );
 
-    @Query(value = "SELECT s1.id, sr.distance, sr.time, sr.price, s1.name AS stop_origin, s2.name AS stop_destination " +
+    @Query(value = "SELECT " +
+            "s1.id AS stopIdFrom, s2.id AS stopIdTo, sr.distance, sr.time, sr.price, s1.name AS stop_origin, s2.name AS stop_destination " +
             "FROM stop_routes sr " +
             "JOIN stop s1 ON s1.id=sr.stop_id_from  " +
             "JOIN stop s2 ON s2.id=sr.stop_id_to  " +
@@ -44,5 +45,6 @@ public interface IStopRoutesRepository extends JpaRepository<StopRouteModel, Lon
     List<Object[]> getRoutesBeetwenTwoStops(
             @Param("origin") Long origin,
             @Param("destination") Long destination);
+
 
 }
