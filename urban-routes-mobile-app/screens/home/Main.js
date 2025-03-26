@@ -38,13 +38,13 @@ export default function Main() {
 
 const SelectedMainComponent = ({ selected }) => {
    if (selected === dataMain.BusesMain) {
-      return <StopsMain />
+      return <View className="pb-96"><StopsMain /></View>
    }
    if (selected === dataMain.TransportsMain) {
-      return <TransportsMain />
+      return <View className="pb-96"><TransportsMain /></View>
    }
    if (selected === dataMain.Transport) {
-      return <Transport />
+      return <View className="pb-96"><Transport /></View>
    }
    else {
       return <View><Text>Error Menu no seleccionado</Text></View>

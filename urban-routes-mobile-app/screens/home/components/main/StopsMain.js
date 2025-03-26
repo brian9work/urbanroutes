@@ -3,17 +3,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ContextHome } from '../../../../app/home/Context';
 import Api from '../../../../services/api'
 import GET from '../../../../hooks/GET'
-import { Pressable } from 'react-native';
-import dataMain from './mainData'
-import { StopIcon, WalkIcon } from '../../../../constants/Icons';
 import Empty from '../../../../components/common/Empty';
 import Title from '../../../../components/common/Title';
 import Skeleton from './stopsMain/Skeleton';
 import Stop from './stopsMain/Stop';
-import { AntDesign, Feather, FontAwesome5, FontAwesome6, MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome6 } from '@expo/vector-icons';
 
 export default function StopsMain() {
-   const { nearbyStopsData, selectedIdStop, selectedMain } = useContext(ContextHome);
+   const { nearbyStopsData } = useContext(ContextHome);
    const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;
 
    const [loading, setLoading] = useState(true);
@@ -60,8 +57,7 @@ export default function StopsMain() {
    }
 
    return (
-      <View className="pb-96">
-
+      <View className="">
          <View>
             <Text className="text-4xl font-extrabold mt-5 flex gap-3 text-app-primary">
                <View className="pr-3">

@@ -3,9 +3,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ContextHome } from '../../../../app/home/Context';
 import Api from '../../../../services/api';
 import GET from '../../../../hooks/GET';
-import Title from '../../../../components/common/Title';
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-import { Picker } from "@react-native-picker/picker";
 import InformationInitial from './transport/InformationInitial';
 import Pickers from './transport/Pickers';
 import Stops from './transport/Stops';
@@ -65,8 +62,6 @@ export default function Transport() {
          <InformationInitial data={data} infoStopInitial={infoStopInitial} />
          <Pickers stops={data.allStops} />
          <Stops transportStops={data.transportStops} />
-         <Separator />
-         <Separator />
       </View>
    )
 }

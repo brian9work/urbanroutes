@@ -1,14 +1,10 @@
 import { View, Text, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { Picker } from '@react-native-picker/picker';
-import { FontAwesome5, FontAwesome6 } from '@expo/vector-icons';
-import Octicons from '@expo/vector-icons/Octicons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { PrimaryButton } from '../../../../../components/common/Buttom';
 import PickerComponent from './PickerComponent';
-import { ClockIcon, MoneyIcon, RouteIcon } from '../../../../../constants/Icons';
 import GET from '../../../../../hooks/GET';
 import Api from '../../../../../services/api';
-import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function Pickers({ stops }) {
    const [selectedOpcionValueFrom, setSelectedOpcionValueFrom] = useState(stops[0].id);
@@ -54,7 +50,6 @@ export default function Pickers({ stops }) {
       <View className="mt-12 w-full mx-auto border-t-8 border-t-app-primary rounded-xl pt-5">
          <View className="w-11/12 mx-auto">
             <View className="flex flex-row items-center gap-2">
-               {/* <Ionicons name="search" size={24} color="#0d6cf2" /> */}
                <FontAwesome5 name="search" size={24} color="#0d6cf2" />
                <Text className="text-xl font-semibold">Buscador de transporte Publico </Text>
             </View>
@@ -85,7 +80,13 @@ export default function Pickers({ stops }) {
             </View>
             <View className="mt-5">
                <PrimaryButton fun={() => {
+                  setInfo({
+                     price: "---",
+                     distance: "---",
+                     time: "---"
+                  })
                   calculate()
+
                }}>Calcular </PrimaryButton>
             </View>
          </View>
