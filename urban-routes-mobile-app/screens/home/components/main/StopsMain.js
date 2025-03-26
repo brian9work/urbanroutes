@@ -10,6 +10,7 @@ import Empty from '../../../../components/common/Empty';
 import Title from '../../../../components/common/Title';
 import Skeleton from './stopsMain/Skeleton';
 import Stop from './stopsMain/Stop';
+import { AntDesign, Feather, FontAwesome5, FontAwesome6, MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function StopsMain() {
    const { nearbyStopsData, selectedIdStop, selectedMain } = useContext(ContextHome);
@@ -60,8 +61,19 @@ export default function StopsMain() {
 
    return (
       <View className="pb-96">
-         <Title>Bases Cercanas</Title>
+
          <View>
+            <Text className="text-4xl font-extrabold mt-5 flex gap-3 text-app-primary">
+               <View className="pr-3">
+                  <FontAwesome6 name="location-crosshairs" size={20} color="#0d6cf299" />
+               </View>
+               <Text className="">
+                  Bases Cercanas
+               </Text>
+            </Text>
+         </View>
+
+         <View className="mt-5">
             {nearbyStopsDataState.map((stop, index) => {
                return (
                   <Stop

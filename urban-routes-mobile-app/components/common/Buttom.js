@@ -9,7 +9,7 @@ export default function Buttom({ fun, children, className }) {
             >
                 <Text 
                     className="
-                        text-app-secondary
+                        text-white/90
                         text-center
                         font-bold
                         uppercase
@@ -28,7 +28,7 @@ export function PrimaryButton({ fun, children, className }) {
             >
                 <Text 
                     className="
-                        text-app-secondary
+                        text-white/90
                         text-center
                         font-bold
                         uppercase
@@ -43,7 +43,7 @@ export function SecundaryButton({ fun, children, className }) {
     return (
         <Pressable onPress={fun}>
             <View 
-                className={`${className} bg-app-secondary py-3 rounded-xl border-2 border-app-primary`}
+                className={`${className} text-white/90 py-3 rounded-xl border-2 border-app-primary`}
             >
                 <Text 
                     className="

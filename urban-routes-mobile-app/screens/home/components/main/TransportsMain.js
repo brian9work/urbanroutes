@@ -9,6 +9,7 @@ import { ClockIcon, MoneyIcon, RouteIcon, StopIcon, TransportIcon } from '../../
 import Empty from '../../../../components/common/Empty';
 import TransportStop from './transportMain/TransportStop';
 import Skeleton from './transportMain/Skeleton';
+import { FontAwesome5, FontAwesome6, MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function TransportsMain() {
     const { selectedIdStop, transportsForStopData, selectedMain, selectedIdtransport, selectedDestination } = useContext(ContextHome);
@@ -60,17 +61,25 @@ export default function TransportsMain() {
 
     return (
         <View>
-            <Title>Transportes disponibles: {selectedIdStopState}</Title>
+
             <View>
+                <Text className="text-4xl font-extrabold mt-5 flex gap-3 text-app-primary">
+                    <View className="pr-3">
+                        {/* <MaterialCommunityIcons name="bus-stop" size={20} color="#0d6cf2" /> */}
+                        <FontAwesome5 name="bus" size={20} color="#0d6cf2" />
+                        {/* <FontAwesome6 name="location-crosshairs" size={20} color="#0d6cf299" /> */}
+                    </View>
+                    <Text className="">
+                        Transportes #{selectedIdStopState}
+                    </Text>
+                </Text>
+            </View>
+            <View className="mt-5">
                 {transportsForStopDataState.map((transport, i) => {
                     return (
                         <TransportStop
                             key={`transportID-${transport.transportId}`}
                             item={transport}
-                            // setSelectedIdtransportState={setSelectedIdtransportState}
-                            // setSelectedMainState={setSelectedMainState}
-                            // setSelectedDestinationState={setSelectedDestinationState}
-                            // dataMainTransport={dataMain.Transport}
                         />
                     )
                 })}

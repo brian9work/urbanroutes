@@ -71,15 +71,15 @@ export default function Pickers({ stops }) {
 
             <View className="flex flex-row gap-2 mt-8 mx-auto">
                <View className="w-[33%] ">
-                  <Text className="block text-lg text-muted-foreground">Precio</Text>
+                  <Text className="block text-lg text-app-secondary">Precio</Text>
                   <Text className="text-xl font-bold">$ {info.price}</Text>
                </View>
                <View className="w-[33%] ">
-                  <Text className="block text-lg text-muted-foreground">Tiempo</Text>
+                  <Text className="block text-lg text-app-secondary">Tiempo</Text>
                   <Text className="text-xl font-bold">{info.time} min.</Text>
                </View>
                <View className="w-[33%] ">
-                  <Text className="block text-lg text-muted-foreground">Distancia</Text>
+                  <Text className="block text-lg text-app-secondary">Distancia</Text>
                   <Text className="text-xl font-bold">{info.distance} Km.</Text>
                </View>
             </View>

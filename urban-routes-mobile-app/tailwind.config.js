@@ -32,7 +32,8 @@ module.exports = {
           app: {
             // primary: '#003CB5',
             primary: '#0d6cf2',
-            secondary: '#EEEEEE',
+            // secondary: '#EEEEEE',
+            secondary: '#888',
             accent: '#99D1FF',
             backgroundLight: '#E6F4FF',
             backgroundDark: '#004080',

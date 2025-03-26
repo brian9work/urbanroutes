@@ -9,8 +9,8 @@ export default function InformationInitial({ data, infoStopInitial }) {
             <View>
                 <View className="flex flex-row items-center gap-2">
                     {/* <MaterialCommunityIcons name="bus" size={24} color="black" /> */}
-                    <MaterialCommunityIcons name="bus-articulated-front" size={24} color="#666" />
-                    <Text className="text-base">Transporte: {data.transportName}</Text>
+                    <MaterialCommunityIcons name="bus-articulated-front" size={24} color="#0d6cf2" />
+                    <Text className="text-base text-app-secondary">Transporte: {data.transportName}</Text>
                 </View>
                 <Text className="text-4xl font-extrabold mt-5">
                     <Text>Rumbo a: </Text>
@@ -21,14 +21,14 @@ export default function InformationInitial({ data, infoStopInitial }) {
             </View>
             <View className="mt-5">
                 <View className="flex justify-between flex-row mb-3">
-                    <View className="w-[47%]">
+                    <View className="w-[47%] ">
                         <BoxWhitBorder
                             tit={"Costo del pasaje:"}
                             text={"$ " + infoStopInitial.price}
                             color={"text-common-green"}
                         />
                     </View>
-                    <View className="w-[47%]">
+                    <View className="w-[47%] ">
                         <BoxWhitBorder
                             tit={"Tiempo de recorrido:"}
                             text={infoStopInitial.time + "m."}
@@ -52,7 +52,7 @@ export default function InformationInitial({ data, infoStopInitial }) {
 function BoxWhitBorder({ tit, text, color }) {
     return (
         <View className="flex flex-col justify-center items-center gap-1 rounded-xl border-2 border-gray-200 py-3 w-full">
-            <Text className="text-sm">
+            <Text className="text-sm text-app-secondary">
                 {tit}
             </Text>
             <Text className={`text-3xl font-bold ${color}`}>
