@@ -5,7 +5,6 @@ import TransportsMain from './components/main/TransportsMain';
 import Transport from './components/main/Transport';
 import dataMain from './components/main/mainData'
 import StopsMain from './components/main/StopsMain';
-import BtnActiveMenu from './components/main/BtnActiveMenu';
 import HiddenMenu from './components/main/buttons/HiddenMenu';
 import RestartMain from './components/main/buttons/RestartMain';
 
@@ -20,7 +19,7 @@ export default function Main() {
       <View className={`
          w-full
          ${!activeMenuState ? 'mt-[30rem]' : 'mt-[65rem]'}
-         bg-gray-50 mx-auto
+         bg-gray-100 mx-auto
          min-h-[33rem]
          px-5 pt-5 pb-2
          rounded-tl-[2.5rem] rounded-tr-[2.5rem]
@@ -48,6 +47,6 @@ const SelectedMainComponent = ({ selected }) => {
       return <Transport />
    }
    else {
-      return <View><Text>Error</Text></View>
+      return <View><Text>Error Menu no seleccionado</Text></View>
    }
 } 
