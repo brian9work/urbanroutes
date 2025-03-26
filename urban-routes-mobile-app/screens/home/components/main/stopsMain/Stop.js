@@ -1,9 +1,10 @@
-import { View, Text } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import React, { useContext } from 'react'
 import dataMain from '../mainData'
 import { ContextHome } from '../../../../../app/home/Context';
+import { StopIcon, WalkIcon } from '../../../../../constants/Icons';
 
-export default function Stop() {
+export default function Stop({stop}) {
    const { selectedIdStop, selectedMain } = useContext(ContextHome);
    const [selectedIdStopState, setSelectedIdStopState] = selectedIdStop;
    const [selectedMainState, setSelectedMainState] = selectedMain;

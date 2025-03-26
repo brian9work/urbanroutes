@@ -5,8 +5,7 @@ import dataMain from '../mainData'
 import { Entypo } from '@expo/vector-icons';
 
 export default function RestartMain() {
-   const { activeMenu, selectedMain, infoOfTransport } = useContext(ContextHome);
-   const [activeMenuState, setActiveMenuState] = activeMenu;
+   const { selectedMain, infoOfTransport } = useContext(ContextHome);
    const [selectedMainState, setSelectedMainState] = selectedMain;
    const [infoOfTransportState, setInfoOfTransportState] = infoOfTransport;
   return (
@@ -16,9 +15,10 @@ export default function RestartMain() {
           if(selectedMainState === dataMain.Transport){
              setSelectedMainState(dataMain.TransportsMain)
              setInfoOfTransportState({route:[]})
-          }
-          if(selectedMainState === dataMain.TransportsMain){
+          } else if(selectedMainState === dataMain.TransportsMain){
              setSelectedMainState(dataMain.BusesMain)
+          } else {
+            setSelectedMainState(dataMain.BusesMain)
           }
        }}
     >

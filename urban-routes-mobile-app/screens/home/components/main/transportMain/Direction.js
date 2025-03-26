@@ -2,9 +2,10 @@ import { View, Text, Pressable } from 'react-native'
 import React, { useContext } from 'react'
 import dataMain from '../mainData'
 import { ContextHome } from '../../../../../app/home/Context';
+import { ClockIcon, MoneyIcon, RouteIcon, TransportIcon } from '../../../../../constants/Icons';
 
-export default function Direction({ id, destination, price, frequency, distance, transportId }) {
-    const { selectedIdStop, transportsForStopData, selectedMain, selectedIdtransport, selectedDestination } = useContext(ContextHome);
+export default function Direction({ id, destination, price, time, distance, transportId }) {
+    const { selectedMain, selectedIdtransport, selectedDestination } = useContext(ContextHome);
     const [selectedMainState, setSelectedMainState] = selectedMain;
     const [selectedIdtransportState, setSelectedIdtransportState] = selectedIdtransport;
     const [selectedDestinationState, setSelectedDestinationState] = selectedDestination;
@@ -17,11 +18,27 @@ export default function Direction({ id, destination, price, frequency, distance,
             }}
         >
             <Text className="flex gap-2">Rumbo a:
+            </Text>
                 <Text className="font-bold">
                     {destination} - {id}
                 </Text>
-            </Text>
             <View className="flex flex-row justify-around gap-x-0.5 mt-2">
+
+                {/* <View className="flex flex-row gap-x-2 w-10/12">
+                    <View className="w-[33%] ">
+                        <Text className="block text-lg text-muted-foreground">Precio</Text>
+                        <Text className="text-xl font-bold">$ {price}</Text>
+                    </View>
+                    <View className="w-[33%] ">
+                        <Text className="block text-lg text-muted-foreground">Tiempo</Text>
+                        <Text className="text-xl font-bold">{time} min.</Text>
+                    </View>
+                    <View className="w-[33%] ">
+                        <Text className="block text-lg text-muted-foreground">Distancia</Text>
+                        <Text className="text-xl font-bold">{distance} Km.</Text>
+                    </View>
+                </View> */}
+
                 <View className="flex flex-row gap-x-2 w-10/12 ">
                     <View className="flex flex-row items-center gap-1.5">
                         <MoneyIcon />
@@ -29,7 +46,7 @@ export default function Direction({ id, destination, price, frequency, distance,
                     </View>
                     <View className="flex flex-row items-center gap-1.5">
                         <ClockIcon />
-                        <Text className="text-lg">{frequency} m.</Text>
+                        <Text className="text-lg">{time} m.</Text>
                     </View>
                     <View className="flex flex-row items-center gap-1.5">
                         <RouteIcon />
