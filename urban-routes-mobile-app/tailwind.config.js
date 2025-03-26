@@ -30,7 +30,8 @@ module.exports = {
             white: "#F8F9FA",
           },
           app: {
-            primary: '#003CB5',
+            // primary: '#003CB5',
+            primary: '#0d6cf2',
             secondary: '#EEEEEE',
             accent: '#99D1FF',
             backgroundLight: '#E6F4FF',
