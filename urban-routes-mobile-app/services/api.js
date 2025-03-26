@@ -20,12 +20,20 @@ const Api ={
     transport: {
         getTransport : (idTransport) => {
             return `${originStatic}/transport/${idTransport}`;
+        },
+        getTransportBeetwenTwoStops : (idTransport, originStop, destinationStop) => {
+            return `${originStatic}/transport?idTransport=${idTransport}&originStop=${originStop}&destinationStop=${destinationStop}`;
         }
     },
     catalogs: {
         getFaculties: () => {
             return `${originStatic}/cat/faculty`;
         }
-    }
+    },
+    stopRoutes: {
+        getStopRouteFromAndTo: (stopFrom,stopTo) => {
+            return `${originStatic}/sr?stopFrom=${stopFrom}&stopTo=${stopTo}`;
+        }
+    },
 }
 export default Api;
