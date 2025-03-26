@@ -10,10 +10,10 @@ export default function Provider ({ children }) {
    const infoOfTransport = useState({route:[]});
    const activeMenu = useState(true);
    const activeMenuSearch = useState(false);
+   const selectedDestination = useState(0);
 
    return (
       <ContextHome.Provider value={{
-         // ...Contexts
          selectedMain,
          nearbyStopsData,
          transportsForStopData,
@@ -22,6 +22,7 @@ export default function Provider ({ children }) {
          infoOfTransport,
          activeMenu,
          activeMenuSearch,
+         selectedDestination,
       }}>
          {children}
       </ContextHome.Provider>
