@@ -4,7 +4,7 @@ import { FontAwesome } from '@expo/vector-icons'
 import { ContextHome } from '../../../../../app/home/Context';
 
 export default function HiddenMenu() {
-    const { activeMenu, selectedMain, infoOfTransport } = useContext(ContextHome);
+    const { activeMenu, notificationValue } = useContext(ContextHome);
     const [activeMenuState, setActiveMenuState] = activeMenu;
 
     return (
