@@ -5,6 +5,9 @@ import transport4 from '../assets/images/version/transport4.jpg';
 import transport5 from '../assets/images/version/transport5.jpg';
 import transport6 from '../assets/images/version/transport6.jpg';
 
+import stop from '../assets/icons/stop.png';
+import location from '../assets/icons/my-location.png';
+
 export default images = {
     version: {
         transport1: transport1,
@@ -13,5 +16,9 @@ export default images = {
         transport4: transport4,
         transport5: transport5,
         transport6: transport6,
+    },
+    icons: {
+        stop: stop,
+        location: location,
     }
 }
