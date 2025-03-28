@@ -12,6 +12,19 @@ export default function Provider ({ children }) {
    const activeMenuSearch = useState(false);
    const selectedDestination = useState(0);
 
+   const notificationValue= useState({
+      value: false,
+      type: "success",
+      message : "Este es un texto de prueba de una notificacion"
+   })
+
+   const notificationValueChangue = (message="Esperando mensaje", type="") => {
+      notificationValue[1]({ value: true, message : message, type: type })
+      setTimeout(() => {
+         notificationValue[1]({ value: false, message : message, type: type })
+      }, 10000)
+   }
+
    return (
       <ContextHome.Provider value={{
          selectedMain,
@@ -23,6 +36,9 @@ export default function Provider ({ children }) {
          activeMenu,
          activeMenuSearch,
          selectedDestination,
+
+         notificationValue,
+         notificationValueChangue
       }}>
          {children}
       </ContextHome.Provider>
