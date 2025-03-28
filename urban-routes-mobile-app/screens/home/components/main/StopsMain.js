@@ -10,7 +10,7 @@ import Stop from './stopsMain/Stop';
 import { FontAwesome6 } from '@expo/vector-icons';
 
 export default function StopsMain() {
-   const { nearbyStopsData } = useContext(ContextHome);
+   const { nearbyStopsData, notificationValueChangue } = useContext(ContextHome);
    const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;
 
    const [loading, setLoading] = useState(true);
@@ -23,6 +23,7 @@ export default function StopsMain() {
       ), "json")
 
       if (!response) {
+         notificationValueChangue("No se puede obtener las bases de stops cercanas.")
          console.warn("Error al obtener las bases de stops cercanas.")
          setNearbyStopsDataState([])
          setLoading(false)

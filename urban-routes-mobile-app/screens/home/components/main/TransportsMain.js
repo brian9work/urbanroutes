@@ -10,12 +10,9 @@ import Skeleton from './transportMain/Skeleton';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 export default function TransportsMain() {
-    const { selectedIdStop, transportsForStopData, selectedMain, selectedIdtransport, selectedDestination } = useContext(ContextHome);
+    const { selectedIdStop, transportsForStopData, selectedMain, selectedIdtransport, selectedDestination, notificationValue, notificationValueChangue } = useContext(ContextHome);
     const [selectedIdStopState, setSelectedIdStopState] = selectedIdStop;
     const [transportsForStopDataState, setTransportsForStopDataState] = transportsForStopData;
-    const [selectedMainState, setSelectedMainState] = selectedMain;
-    const [selectedIdtransportState, setSelectedIdtransportState] = selectedIdtransport;
-    const [selectedDestinationState, setSelectedDestinationState] = selectedDestination;
     const [loading, setLoading] = useState(true);
 
     const getNearbyTransports = async () => {
@@ -24,6 +21,7 @@ export default function TransportsMain() {
         ), "json")
 
         if (!response) {
+            notificationValueChangue("No hay bases cercanas a su ubicación")
             console.warn("Error al obtener las bases de stops cercanas.")
             setTransportsForStopDataState([])
             setLoading(false)
@@ -48,10 +46,12 @@ export default function TransportsMain() {
     }
 
     if (!loading && transportsForStopDataState.length === 0) {
+        
+        // notificationValueChangue("Lo sentimos no hay transportes que pasen por esta base","warning")
         return (<>
             <Title>Transportes disponibles: {selectedIdStopState}</Title>
             <Empty
-                message='Lo siento no hay transportes que pasen por esta base'
+                message='Lo sentimos no hay transportes que pasen por esta base'
                 description='Intente moverse seleccionar otra base'
             />
         </>)

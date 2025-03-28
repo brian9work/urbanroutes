@@ -1,18 +1,25 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
+import { ContextHome } from '../../app/home/Context';
 
-export default function Empty({ message = "No hay resultados", description = "Por favor reinitente la operacion de nuevo" }) {
+export default function Empty({ message = "No hay resultados", description = "Por favor reintente la operacion de nuevo" }) {
+   const { notificationValueChangue } = useContext(ContextHome);
+
+   useEffect(() => {
+      notificationValueChangue("Lo sentimos no hay transportes que pasen por esta base", "warning")
+   }, [])
+
    return (
-      <View className="flex items-center justify-center min-h-[90%] ">
+      <View className="flex items-center justify-center min-h-[50%] w-11/12 mx-auto ">
          <FontAwesome
-            className="p-10 bg-yellow-500 rounded-full"
+            className="p-10 bg-app-primary/10 rounded-full"
             name="search"
             size={45}
-            color="black"
+            color="#0d6cf2"
          />
-         <Text className="text-2xl text-yellow-500 font-bold mt-3">{message}</Text>
-         <Text className="text-xl mt-1">{description}</Text>
+         <Text className="text-3xl text-app-primary font-bold mt-3 text-center">{message}</Text>
+         <Text className="text-xl text-app-secondary mt-1">{description}</Text>
       </View>
    )
 }

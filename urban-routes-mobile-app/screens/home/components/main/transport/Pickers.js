@@ -1,12 +1,15 @@
 import { View, Text, Alert } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { PrimaryButton } from '../../../../../components/common/Buttom';
 import PickerComponent from './PickerComponent';
 import GET from '../../../../../hooks/GET';
 import Api from '../../../../../services/api';
+import { ContextHome } from '../../../../../app/home/Context';
 
 export default function Pickers({ stops }) {
+   const { notificationValueChangue } = useContext(ContextHome);
+   
    const [selectedOpcionValueFrom, setSelectedOpcionValueFrom] = useState(stops[0].id);
    const [selectedOpcionValueTo, setSelectedOpcionValueTo] = useState(stops[stops.length - 1].id);
 
@@ -18,7 +21,7 @@ export default function Pickers({ stops }) {
 
    const calculate = async () => {
       if (selectedOpcionValueFrom === selectedOpcionValueTo) {
-         Alert.alert("Error", "El origen y el destino no pueden ser iguales.")
+         notificationValueChangue("El origen y el destino no pueden ser iguales", "warning")
          return
       }
 

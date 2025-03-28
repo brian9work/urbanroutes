@@ -1,10 +1,11 @@
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import React, { useContext, useEffect } from 'react'
 import MapView, { Marker, Polygon, Polyline, PROVIDER_GOOGLE } from 'react-native-maps'
 import Dim from '../../constants/dimensions';
 import { ContextHome } from '../../app/home/Context';
 import Empty from '../../components/common/Empty';
 import dataMain from './components/main/mainData'
+import images from '../../constants/images';
 
 const MapStyle = [
    { "featureType": "administrative", "elementType": "geometry", "stylers": [{ "visibility": "off" }] },
@@ -14,19 +15,20 @@ const MapStyle = [
 ]
 
 export default function Map() {
-   const { nearbyStopsData, selectedIdStop, selectedMain, infoOfTransport, activeMenu } = useContext(ContextHome);
+   const { nearbyStopsData, selectedIdStop, selectedMain, infoOfTransport, activeMenu, notificationValue } = useContext(ContextHome);
    const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;
    const [selectedIdStopState, setSelectedIdStopState] = selectedIdStop;
    const [selectedMainState, setSelectedMainState] = selectedMain;
    const [dataTransportState, setDataTransportState] = infoOfTransport;
-       const [activeMenuState, setActiveMenuState] = activeMenu;
+   const [activeMenuState, setActiveMenuState] = activeMenu;
+   const [notificationState, setNotificationState] = notificationValue;
    const dimensions = Dim();
 
    useEffect(() => {
       if (nearbyStopsDataState.length === 0) {
          console.warn("No hay bases cercanas")
       }
-   },[nearbyStopsDataState, dataTransportState])
+   }, [nearbyStopsDataState, dataTransportState])
 
 
    if (nearbyStopsDataState.length === 0) {
@@ -62,17 +64,32 @@ export default function Map() {
                   <Polyline
                      // coordinates={dataTransportState.route}
                      coordinates={
-                        dataTransportState.route.map(c => { 
+                        dataTransportState.route.map(c => {
                            return {
-                             latitude: parseFloat(c.latitude), 
-                             longitude: parseFloat(c.longitude) 
+                              latitude: parseFloat(c.latitude),
+                              longitude: parseFloat(c.longitude)
                            }
-                       })
+                        })
                      }
-                     strokeColor="red"
-                     strokeWidth={2}
+                     strokeColor="#0d6cf2"
+                     strokeWidth={5}
                   />
                }
+
+               <Marker
+                  coordinate={{
+                     latitude: 19.414693337816825,
+                     longitude: -98.14004773086025,
+                  }}
+                  title='Mi ubicación'
+               >
+
+                  <Image
+                     source={images.icons.location}
+                     className="object-cover object-center"
+                     style={{ width: 40, height: 40 }}
+                  />
+               </Marker>
 
                {nearbyStopsDataState.length === 0 ? <></>
                   :
@@ -91,22 +108,29 @@ export default function Map() {
                               setSelectedMainState(dataMain.TransportsMain)
                               setActiveMenuState(false)
                            }}
-                        />
+                        >
+
+                           <Image
+                              source={images.icons.stop}
+                              className="object-cover object-center"
+                              style={{ width: 40, height: 40 }}
+                           />
+                        </Marker>
                      )
                   })}
 
-                  <Polygon
-                     coordinates={[
-                        { latitude: 19.418324814888276, longitude: -98.12421015124512 },
-                        { latitude: 19.419336038579768, longitude: -98.12847113528545 },
-                        { latitude: 19.418073128062897, longitude: -98.12970119585708 },
-                        { latitude: 19.417526596174188, longitude: -98.12821372506644 },
-                        { latitude: 19.416904073677458, longitude: -98.12595462878743 },
-                     ]}
-                     strokeColor="rgba(136,0,0,0.8)"
-                     fillColor="rgba(190,0,0,1)"
-                     strokeWidth={2}
-                  />
+               <Polygon
+                  coordinates={[
+                     { latitude: 19.418324814888276, longitude: -98.12421015124512 },
+                     { latitude: 19.419336038579768, longitude: -98.12847113528545 },
+                     { latitude: 19.418073128062897, longitude: -98.12970119585708 },
+                     { latitude: 19.417526596174188, longitude: -98.12821372506644 },
+                     { latitude: 19.416904073677458, longitude: -98.12595462878743 },
+                  ]}
+                  strokeColor="rgba(136,0,0,0.8)"
+                  fillColor="rgba(190,0,0,1)"
+                  strokeWidth={2}
+               />
 
                {/* {stops.length === 0 ? <></>
                         :

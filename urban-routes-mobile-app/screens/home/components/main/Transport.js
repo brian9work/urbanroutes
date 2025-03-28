@@ -8,7 +8,7 @@ import Pickers from './transport/Pickers';
 import Stops from './transport/Stops';
 
 export default function Transport() {
-   const { selectedIdtransport, infoOfTransport, nearbyStopsData, selectedIdStop, selectedDestination } = useContext(ContextHome);
+   const { selectedIdtransport, infoOfTransport, nearbyStopsData, selectedIdStop, selectedDestination, notificationValueChangue } = useContext(ContextHome);
    const [selectedIdtransportState, setSelectedIdtransportState] = selectedIdtransport;
    const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;
    const [selectedIdStopState, setSelectedIdStopStateState] = selectedIdStop;
@@ -25,6 +25,7 @@ export default function Transport() {
       ), "json")
 
       if (!responseTransport) {
+         notificationValueChangue("No se pudo obtener el transporte seleccionado.")
          console.warn("Error al obtener el transporte seleccionado.")
          setTransportsForStopDataState([])
          setLoading(false)
@@ -36,6 +37,7 @@ export default function Transport() {
       ), "json")
 
       if (!responseStopInitial) {
+         notificationValueChangue("No se pudo obtener las bases de stops del transporte seleccionado.")
          console.warn("Error al obtener las bases de stops del transporte seleccionado.")
          setTransportsForStopDataState([])
          setLoading(false)
