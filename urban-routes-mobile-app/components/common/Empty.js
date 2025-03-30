@@ -6,10 +6,6 @@ import { ContextHome } from '../../app/home/Context';
 export default function Empty({ message = "No hay resultados", description = "Por favor reintente la operacion de nuevo" }) {
    const { notificationValueChangue } = useContext(ContextHome);
 
-   useEffect(() => {
-      notificationValueChangue("Lo sentimos no hay transportes que pasen por esta base", "warning")
-   }, [])
-
    return (
       <View className="flex items-center justify-center min-h-[50%] w-11/12 mx-auto ">
          <FontAwesome

@@ -46,8 +46,6 @@ export default function TransportsMain() {
     }
 
     if (!loading && transportsForStopDataState.length === 0) {
-        
-        // notificationValueChangue("Lo sentimos no hay transportes que pasen por esta base","warning")
         return (<>
             <Title>Transportes disponibles: {selectedIdStopState}</Title>
             <Empty

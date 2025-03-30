@@ -10,17 +10,25 @@ import Stop from './stopsMain/Stop';
 import { FontAwesome6 } from '@expo/vector-icons';
 
 export default function StopsMain() {
-   const { nearbyStopsData, notificationValueChangue } = useContext(ContextHome);
-   const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;
+   const { nearbyStopsData, notificationValueChangue, location } = useContext(ContextHome);
+   const [ nearbyStopsDataState, setNearbyStopsDataState ] = nearbyStopsData;
+   const [ locationState, setLocationState ] = location;
 
    const [loading, setLoading] = useState(true);
 
    const getNearbyStops = async () => {
+      console.log("locationState", locationState)
       const response = await GET(Api.nearby.stops(
-         19.41514082532041,
-         -98.14024764753933,
-         500
+         locationState.latitude,
+         locationState.longitude,
+         locationState.distance,
       ), "json")
+
+      console.log(Api.nearby.stops(
+         locationState.latitude,
+         locationState.longitude,
+         locationState.distance,
+      ))
 
       if (!response) {
          notificationValueChangue("No se puede obtener las bases de stops cercanas.")
@@ -36,7 +44,7 @@ export default function StopsMain() {
 
    useEffect(() => {
       getNearbyStops()
-   }, [])
+   }, [locationState])
 
    if (loading) {
       return (<>

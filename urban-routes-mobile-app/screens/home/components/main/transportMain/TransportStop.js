@@ -4,7 +4,7 @@ import Direction from './Direction';
 
 export default function TransportStop({ item }) {
     return (
-        <View className="">
+        <View className="my-5">
             <View className="flex flex-row items-center gap-2">
                 <Text className="text-2xl font-bold">{item.transportName}</Text>
                 <Text className="px-3 py-1 bg-gray-200 capitalize rounded-xl text-xs">
