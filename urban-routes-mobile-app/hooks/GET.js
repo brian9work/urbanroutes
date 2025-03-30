@@ -4,6 +4,12 @@ export default async function GET (url, type = "text") {
     try {
         const response = await fetch(url, {
             method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+            mode: 'cors',
         })
             .catch(error => {
                 console.warn("Error de conexión: No se pudo establecer conexión con el servidor.")
