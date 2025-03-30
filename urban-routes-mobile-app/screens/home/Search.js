@@ -37,7 +37,7 @@ export default function Search() {
         <View className={
             `absolute left-0 w-full z-30
             ${activeMenuSearchState ?
-                "bg-gray-100 top-0 py-10 h-full"
+                "bg-gray-100 top-0 py-10 h-[900]"
                 :
                 "bg-gray-100/0 top-11 py-0 h-14 overflow-hidden"
             }
@@ -79,7 +79,7 @@ export default function Search() {
                             <ComponentFacultades 
                                 key={"facultad-"+index} 
                                 facultad={facultad} 
-                            />
+                                />
                         )
                     })}
                 </View>

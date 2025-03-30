@@ -18,16 +18,18 @@ export default function Main() {
    return (
       <View className={`
          w-full
-         ${!activeMenuState ? 'mt-[30rem]' : 'mt-[65rem]'}
+         ${!activeMenuState ? 'top-[420]' : 'top-[850]'}
          bg-gray-100 mx-auto
          min-h-[33rem]
          px-5 pt-5 pb-2
          rounded-tl-[2.5rem] rounded-tr-[2.5rem]
-         relative
+         absolute
          `}>
          <HiddenMenu />
          <RestartMain />
-         <ScrollView>
+         <ScrollView 
+            className="h-96"
+         >
             <SelectedMainComponent selected={selectedMainState} />
          </ScrollView>
       </View>

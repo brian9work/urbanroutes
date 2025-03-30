@@ -16,7 +16,7 @@ export default function CloseMenuSearch() {
             }}
         >
             <View className={`
-               absolute right-5 -bottom-[824]
+               absolute right-5 -bottom-[805]
                flex items-center justify-center 
                bg-red-700/90 w-12 h-12 
                rounded-full

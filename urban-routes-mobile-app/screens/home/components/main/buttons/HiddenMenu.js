@@ -15,7 +15,7 @@ export default function HiddenMenu() {
             }}
         >
             <View className={`
-               absolute right-0 ${activeMenuState ? '-top-32' : '-top-20'} 
+            absolute right-0 -top-20
                flex items-center justify-center 
                ${activeMenuState ? "bg-green-700/90" : "bg-red-700/90"} w-12 h-12 
                rounded-full
