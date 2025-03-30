@@ -11,13 +11,14 @@ public class TransportController {
     @Autowired
     private TransportService transportService;
 
-
+    @CrossOrigin(origins = "*")
     @GetMapping("/{idTransport}")
     public TransportDTO getTransport(@PathVariable Long idTransport )
     {
         return this.transportService.getTransport(idTransport);
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping
     public TransportDTO getTransportByIdAndStopId(
             @RequestParam(defaultValue = "1") Long idTransport,

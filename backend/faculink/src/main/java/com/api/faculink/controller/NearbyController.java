@@ -14,6 +14,7 @@ public class NearbyController {
     @Autowired
     private NearbyService nearbyService;
 
+    @CrossOrigin(origins = "*")
     @GetMapping
     public List<NearbyStopDTO> getNearbyStops(
             @RequestParam(defaultValue = "0") double latitude,
@@ -24,6 +25,7 @@ public class NearbyController {
     }
 
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/{idStop}")
     public List<TransportDTO> getNearbyTransportForStop(@PathVariable Long idStop )
     {

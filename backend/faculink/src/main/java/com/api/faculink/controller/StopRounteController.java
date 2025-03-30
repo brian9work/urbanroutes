@@ -11,7 +11,7 @@ public class StopRounteController {
     @Autowired
     private StopRoutesService stopRoutesService;
 
-
+    @CrossOrigin(origins = "*")
     @GetMapping
     public StopRouteDTO getStopByStopFromAndStopTo(
             @RequestParam(defaultValue = "1") Long stopFrom,
