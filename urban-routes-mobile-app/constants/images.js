@@ -7,6 +7,7 @@ import transport6 from '../assets/images/version/transport6.jpg';
 
 import stop from '../assets/icons/stop.png';
 import location from '../assets/icons/my-location.png';
+import university from '../assets/icons/university.png';
 
 export default images = {
     version: {
@@ -20,5 +21,6 @@ export default images = {
     icons: {
         stop: stop,
         location: location,
+        university: university,
     }
 }
