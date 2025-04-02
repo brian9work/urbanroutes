@@ -220,6 +220,8 @@ public class TransportService {
 
             stopInfoBasicLocal.setId(tsml.getStopModel().getId());
             stopInfoBasicLocal.setName(tsml.getStopModel().getName());
+            stopInfoBasicLocal.setLatitude(tsml.getStopModel().getLatitude());
+            stopInfoBasicLocal.setLongitude(tsml.getStopModel().getLongitude());
 
             stopInfoBasic.add(stopInfoBasicLocal);
         }
@@ -249,5 +251,11 @@ public class TransportService {
 
         return transportDTOLocal;
     }
+
+
+    public List<Object[]> getRouteBetweenTwoStops(Long originStop, Long destinationStop) {
+        return transportStopRepository.getRouteBetweenTwoStops(originStop, destinationStop);
+    }
+
 
 }

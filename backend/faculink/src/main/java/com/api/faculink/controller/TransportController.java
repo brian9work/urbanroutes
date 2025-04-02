@@ -5,20 +5,20 @@ import com.api.faculink.services.TransportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/transport")
 public class TransportController {
     @Autowired
     private TransportService transportService;
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/{idTransport}")
     public TransportDTO getTransport(@PathVariable Long idTransport )
     {
         return this.transportService.getTransport(idTransport);
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping
     public TransportDTO getTransportByIdAndStopId(
             @RequestParam(defaultValue = "1") Long idTransport,
@@ -26,6 +26,14 @@ public class TransportController {
             @RequestParam(defaultValue = "9") Long destinationStop)
     {
         return this.transportService.getTransportByIdAndStopId(idTransport, originStop, destinationStop);
+    }
+
+    @GetMapping("/route")
+    public List<Object[]> getRouteBetweenTwoStops(
+            @RequestParam(defaultValue = "1") Long originStop,
+            @RequestParam(defaultValue = "10") Long destinationStop)
+    {
+        return this.transportService.getRouteBetweenTwoStops(originStop, destinationStop);
     }
 
 }

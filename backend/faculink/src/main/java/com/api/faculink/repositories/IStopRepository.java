@@ -48,6 +48,33 @@ public interface IStopRepository extends JpaRepository<StopModel, Long> {
                                         @Param("longitude") double longitude,
                                         @Param("distance") double distance);
 
+
+    @Query(value = "SELECT  " +
+            "    s.id, " +
+            "    s.latitude, " +
+            "    s.longitude, " +
+            "    s.name, " +
+            "    s.imagen, " +
+            "    6371000 * 2 * ASIN( " +
+            "        SQRT( " +
+            "            POWER(SIN((RADIANS(s.latitude) - RADIANS(:latitude)) / 2), 2) + " +
+            "            COS(RADIANS(:latitude)) * COS(RADIANS(s.latitude)) * " +
+            "            POWER(SIN((RADIANS(s.longitude) - RADIANS(:longitude)) / 2), 2) " +
+            "        ) " +
+            "    ) AS distance_meters " +
+            "FROM  " +
+            "    stop s " +
+            "WHERE 6371000 * 2 * ASIN( " +
+            "        SQRT( " +
+            "            POWER(SIN((RADIANS(s.latitude) - RADIANS(:latitude)) / 2), 2) + " +
+            "            COS(RADIANS(:latitude)) * COS(RADIANS(s.latitude)) * " +
+            "            POWER(SIN((RADIANS(s.longitude) - RADIANS(:longitude)) / 2), 2) " +
+            "        ) " +
+            "    ) <= :distance ORDER BY distance_meters ASC ", nativeQuery = true)
+    List<Object[]> getNearbyStops2(@Param("latitude") double latitude,
+                                        @Param("longitude") double longitude,
+                                        @Param("distance") double distance);
+
     @Query(value = "SELECT " +
             "s.id AS stop_id, " +
             "s.longitude, " +

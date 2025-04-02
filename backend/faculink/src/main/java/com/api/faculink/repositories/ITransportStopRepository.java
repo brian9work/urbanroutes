@@ -26,10 +26,44 @@ public interface ITransportStopRepository extends JpaRepository<TransportStopMod
             @Param("idFirstStop") Long idFirstStop,
             @Param("idEndStop") Long idEndStop
     );
-//    SELECT * FROM transport_stop ts
-//    INNER JOIN stop s ON s.id = ts.id_stop
-//    INNER JOIN transport t ON t.id = ts.id_transport
-//    WHERE ts.id_stop BETWEEN 1 AND 7;
+
+    @Query(value = "WITH transportes_comunes AS ( " +
+            "    SELECT ts1.id_transport " +
+            "    FROM transport_stop ts1 " +
+            "    JOIN transport_stop ts2 ON ts1.id_transport = ts2.id_transport " +
+            "    WHERE ts1.id_stop = :originStop " +
+            "    AND ts2.id_stop = :destinationStop ) " +
+            "SELECT  " +
+            "    t.id AS transport_id, " +
+            "    t.name AS transport_name, " +
+            "    s.id AS stop_id, " +
+            "    s.name AS stop_name, " +
+            "    ROW_NUMBER() OVER (PARTITION BY t.id ORDER BY ts.id) AS stop_order " +
+            "FROM  " +
+            "    transport_stop ts " +
+            "JOIN  " +
+            "    transport t ON ts.id_transport = t.id " +
+            "JOIN  " +
+            "    stop s ON ts.id_stop = s.id " +
+            "WHERE  " +
+            "    t.id IN (SELECT id_transport FROM (transportes_comunes)) " +
+            "    AND ts.id_stop IN ( " +
+            "        SELECT ts2.id_stop " +
+            "        FROM transport_stop ts2 " +
+            "        WHERE ts2.id_transport = t.id " +
+            "        AND ts2.id BETWEEN ( " +
+            "            SELECT MIN(id) FROM transport_stop  " +
+            "            WHERE id_transport = t.id AND id_stop = :originStop " +
+            "        ) AND ( " +
+            "            SELECT MAX(id) FROM transport_stop  " +
+            "            WHERE id_transport = t.id AND id_stop = :destinationStop " +
+            "        ) " +
+            "    ) " +
+            "ORDER BY  " +
+            "    t.id,  " +
+            "    stop_order", nativeQuery = true)
+    List<Object[]> getRouteBetweenTwoStops(@Param("originStop") Long originStop, @Param("destinationStop") Long destinationStop);
+
 
     @Query("SELECT ts, s FROM TransportStopModel ts " +
             "JOIN StopModel s ON ts.stopModel.id=s.id " +

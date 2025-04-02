@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/sr")
+@RequestMapping("/api/stoproute")
 public class StopRounteController {
     @Autowired
     private StopRoutesService stopRoutesService;

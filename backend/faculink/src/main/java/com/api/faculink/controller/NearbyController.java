@@ -24,11 +24,28 @@ public class NearbyController {
         return this.nearbyService.getNearbyStops(latitude, longitude, distance);
     }
 
-
-    @CrossOrigin(origins = "*")
     @GetMapping("/{idStop}")
     public List<TransportDTO> getNearbyTransportForStop(@PathVariable Long idStop )
     {
         return this.nearbyService.getNearbyTransportForStop(idStop);
     }
+
+
+    @GetMapping("/v2")
+    public List<NearbyStopDTO> getNearbyStopsForFaculty(
+            @RequestParam(defaultValue = "0") double latitude,
+            @RequestParam(defaultValue = "0") double longitude,
+            @RequestParam(defaultValue = "0") double distance )
+    {
+        return this.nearbyService.getNearbyStopsForFaculty(latitude, longitude, distance);
+    }
+
+
+
+
+
+
+
+
+
 }

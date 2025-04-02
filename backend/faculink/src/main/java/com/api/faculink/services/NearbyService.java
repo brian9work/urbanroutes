@@ -8,8 +8,6 @@ import com.api.faculink.repositories.IRouteCoordinatesRepository;
 import com.api.faculink.repositories.IStopRepository;
 import com.api.faculink.repositories.IStopRoutesRepository;
 import com.api.faculink.repositories.ITransportStopRepository;
-import com.api.faculink.models.*;
-import com.api.faculink.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -129,5 +127,22 @@ public class NearbyService {
         return transportComponent;
     }
 
+    public List<NearbyStopDTO> getNearbyStopsForFaculty(double latitude, double longitude, double distance){
+        List<Object[]> nearbyData = stopRepository.getNearbyStops2(latitude, longitude, distance);
+        List<NearbyStopDTO> nearbyStop = new ArrayList<>();
+
+        for (Object[] stop : nearbyData) {
+            NearbyStopDTO nearbyStopLocal = new NearbyStopDTO();
+            nearbyStopLocal.setStopId((int) stop[0]);
+            nearbyStopLocal.setLatitude((String) stop[1]);
+            nearbyStopLocal.setLongitude((String) stop[2]);
+            nearbyStopLocal.setStopName((String) stop[3]);
+            nearbyStopLocal.setStopImagen((String) stop[4]);
+            nearbyStopLocal.setDistance((double) stop[5]);
+
+            nearbyStop.add(nearbyStopLocal);
+        }
+        return nearbyStop;
+    }
 
 }
