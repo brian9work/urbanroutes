@@ -123,7 +123,6 @@ export default function Map() {
                {facultiesDataState.length === 0 ? <></>
                   :
                   facultiesDataState.map((faculty, index) => {
-                     console.log("Facultad: ", faculty)
                      return (
                         <Marker
                         style={{ width: 60, height: 60 }}
