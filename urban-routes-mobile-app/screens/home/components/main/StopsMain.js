@@ -17,18 +17,11 @@ export default function StopsMain() {
    const [loading, setLoading] = useState(true);
 
    const getNearbyStops = async () => {
-      console.log("locationState", locationState)
       const response = await GET(Api.nearby.stops(
          locationState.latitude,
          locationState.longitude,
          locationState.distance,
       ), "json")
-
-      console.log(Api.nearby.stops(
-         locationState.latitude,
-         locationState.longitude,
-         locationState.distance,
-      ))
 
       if (!response) {
          notificationValueChangue("No se puede obtener las bases de stops cercanas.")

@@ -1,5 +1,5 @@
-import { View, Text, Pressable, ScrollView } from 'react-native'
-import React, { useContext, useState } from 'react'
+import { View, Text, Pressable, ScrollView, BackHandler } from 'react-native'
+import React, { useContext, useEffect, useState } from 'react'
 import { ContextHome } from '../../app/home/Context'
 import TransportsMain from './components/main/TransportsMain';
 import Transport from './components/main/Transport';
@@ -13,7 +13,7 @@ export default function Main() {
    const [selectedMainState, setSelectedMainState] = selectedMain;
    const [activeMenuState, setActiveMenuState] = activeMenu;
 
-   useState(() => { }, [activeMenuState])
+   // useEffect(() => {}, [activeMenuState])
 
    return (
       <View className={`
