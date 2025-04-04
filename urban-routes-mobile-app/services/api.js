@@ -1,5 +1,5 @@
 import { config } from '../config'
-const originStatic = config.SERVER_URL;
+// const originStatic = config.SERVER_URL;
 
 export const actualVersion = "0.1.0";
 
@@ -10,28 +10,28 @@ const Api ={
         verifyVersion: () =>  `https://brian9work.github.io/static/Api/version4.json`,
     },
     nearby: {
-        stops: (latitude, longitude, distance) => {
+        stops: (originStatic, latitude, longitude, distance) => {
             return `${originStatic}/nearby?latitude=${latitude}&longitude=${longitude}&distance=${distance}`;
         },
-        selectedStop: (idStop) => {
+        selectedStop: (originStatic, idStop) => {
             return `${originStatic}/nearby/${idStop}`;
         }
     },
     transport: {
-        getTransport : (idTransport) => {
+        getTransport : (originStatic, idTransport) => {
             return `${originStatic}/transport/${idTransport}`;
         },
-        getTransportBeetwenTwoStops : (idTransport, originStop, destinationStop) => {
+        getTransportBeetwenTwoStops : (originStatic, idTransport, originStop, destinationStop) => {
             return `${originStatic}/transport?idTransport=${idTransport}&originStop=${originStop}&destinationStop=${destinationStop}`;
         }
     },
     catalogs: {
-        getFaculties: () => {
+        getFaculties: (originStatic, ) => {
             return `${originStatic}/cat/faculty`;
         }
     },
     stopRoutes: {
-        getStopRouteFromAndTo: (stopFrom,stopTo) => {
+        getStopRouteFromAndTo: (originStatic, stopFrom, stopTo) => {
             return `${originStatic}/sr?stopFrom=${stopFrom}&stopTo=${stopTo}`;
         }
     },
