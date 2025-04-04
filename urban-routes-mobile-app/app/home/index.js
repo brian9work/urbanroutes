@@ -5,6 +5,7 @@ import Main from '../../screens/home/Main'
 import Search from '../../screens/home/Search';
 import { Notification } from '../../components/common/Notifications';
 import dataMain from '../../screens/home/components/main/mainData'
+import LinkToConfig from '../../screens/home/components/main/buttons/LinkToConfig'
 import { ContextHome } from './Context';
 
 
@@ -47,10 +48,10 @@ export default function index() {
 
    return (
       <View>
-         <Notification />
          <Search />
          <Map />
          <Main />
+         <LinkToConfig />
       </View>
    )
 }
