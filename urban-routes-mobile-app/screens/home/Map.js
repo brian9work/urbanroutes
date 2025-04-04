@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, Alert } from 'react-native'
 import React, { useContext, useEffect } from 'react'
 import MapView, { Marker, Polygon, Polyline, PROVIDER_GOOGLE } from 'react-native-maps'
 import Dim from '../../constants/dimensions';
@@ -6,6 +6,7 @@ import { ContextHome } from '../../app/home/Context';
 import Empty from '../../components/common/Empty';
 import dataMain from './components/main/mainData'
 import images from '../../constants/images';
+import MyLocation from './components/search/MyLocation';
 
 const MapStyle = [
    { "featureType": "administrative", "elementType": "geometry", "stylers": [{ "visibility": "off" }] },
@@ -15,7 +16,7 @@ const MapStyle = [
 ]
 
 export default function Map() {
-   const { nearbyStopsData, selectedIdStop, selectedMain, infoOfTransport, activeMenu, notificationValue, facultiesData } = useContext(ContextHome);
+   const { nearbyStopsData, selectedIdStop, selectedMain, infoOfTransport, location, activeMenu, notificationValue, facultiesData, notificationValueChangue } = useContext(ContextHome);
    const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;
    const [selectedIdStopState, setSelectedIdStopState] = selectedIdStop;
    const [selectedMainState, setSelectedMainState] = selectedMain;
@@ -23,6 +24,8 @@ export default function Map() {
    const [activeMenuState, setActiveMenuState] = activeMenu;
    const [notificationState, setNotificationState] = notificationValue;
    const [facultiesDataState, setFacultiesDataState] = facultiesData;
+   const [locationState, setLocationState] = location;
+
    const dimensions = Dim();
 
    useEffect(() => {
@@ -50,8 +53,8 @@ export default function Map() {
                provider={PROVIDER_GOOGLE}
                style={{ width: dimensions.width, height: dimensions.height * 1.1 }}
                initialRegion={{
-                  latitude: 19.414693337816825,
-                  longitude: -98.14004773086025,
+                  latitude: locationState.latitude,
+                  longitude: locationState.longitude,
                   latitudeDelta: 0.01,
                   longitudeDelta: 0.01
                }}
@@ -75,21 +78,7 @@ export default function Map() {
                      strokeWidth={5}
                   />
                }
-
-               <Marker
-                  coordinate={{
-                     latitude: 19.414693337816825,
-                     longitude: -98.14004773086025,
-                  }}
-                  title='Mi ubicación'
-               >
-
-                  <Image
-                     source={images.icons.location}
-                     className="object-cover object-center"
-                     style={{ width: 40, height: 40 }}
-                  />
-               </Marker>
+               <MyLocation />
 
                {nearbyStopsDataState.length === 0 ? <></>
                   :
@@ -125,7 +114,7 @@ export default function Map() {
                   facultiesDataState.map((faculty, index) => {
                      return (
                         <Marker
-                        style={{ width: 60, height: 60 }}
+                           style={{ width: 60, height: 60 }}
                            key={"marker-faculty-" + index}
                            coordinate={{
                               latitude: parseFloat(faculty.latitude),

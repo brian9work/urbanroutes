@@ -8,16 +8,19 @@ import Title from '../../../../components/common/Title';
 import Skeleton from './stopsMain/Skeleton';
 import Stop from './stopsMain/Stop';
 import { FontAwesome6 } from '@expo/vector-icons';
+import { ContextGlobal } from '../../../../app/ContextGlobal';
 
 export default function StopsMain() {
+   const { distance, endPoint } = useContext(ContextGlobal)
    const { nearbyStopsData, notificationValueChangue, location } = useContext(ContextHome);
-   const [ nearbyStopsDataState, setNearbyStopsDataState ] = nearbyStopsData;
-   const [ locationState, setLocationState ] = location;
+   const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;
+   const [locationState, setLocationState] = location;
 
    const [loading, setLoading] = useState(true);
 
    const getNearbyStops = async () => {
       const response = await GET(Api.nearby.stops(
+         endPoint[0],
          locationState.latitude,
          locationState.longitude,
          locationState.distance,

@@ -2,12 +2,14 @@ import { View, Text, TextInput, Pressable } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { ContextHome } from '../../app/home/Context';
+import { ContextGlobal } from '../../app/ContextGlobal';
 import { AntDesign, FontAwesome5, FontAwesome6, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import CloseMenuSearch from './components/main/buttons/CloseMenuSearch';
 import Api from '../../services/api';
 import GET from '../../hooks/GET';
 
 export default function Search() {
+    const { distance, endPoint } = useContext(ContextGlobal)
     const { activeMenuSearch, location, facultiesData } = useContext(ContextHome);
     const [activeMenuSearchState, setActiveMenuSearchState] = activeMenuSearch;
     const [faculties, setFaculties] = useState([]);
@@ -16,7 +18,7 @@ export default function Search() {
     const [loading, setLoading] = useState(true);
 
     const getFaculties = async () => {
-        const response = await GET(Api.catalogs.getFaculties(), "json")
+        const response = await GET(Api.catalogs.getFaculties(endPoint[0]), "json")
 
         if (!response) {
             console.warn("Error al obtener las facultades disponibles.")

@@ -6,8 +6,10 @@ import GET from '../../../../hooks/GET';
 import InformationInitial from './transport/InformationInitial';
 import Pickers from './transport/Pickers';
 import Stops from './transport/Stops';
+import { ContextGlobal } from '../../../../app/ContextGlobal';
 
 export default function Transport() {
+   const { distance, endPoint } = useContext(ContextGlobal)
    const { selectedIdtransport, infoOfTransport, nearbyStopsData, selectedIdStop, selectedDestination, notificationValueChangue } = useContext(ContextHome);
    const [selectedIdtransportState, setSelectedIdtransportState] = selectedIdtransport;
    const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;
@@ -21,7 +23,10 @@ export default function Transport() {
 
    const getTransport = async () => {
       const responseTransport = await GET(Api.transport.getTransportBeetwenTwoStops(
-         selectedIdtransportState, selectedIdStopState, selectedDestinationState
+         endPoint[0],
+         selectedIdtransportState,
+         selectedIdStopState,
+         selectedDestinationState
       ), "json")
 
       if (!responseTransport) {
@@ -33,7 +38,9 @@ export default function Transport() {
       }
 
       const responseStopInitial = await GET(Api.stopRoutes.getStopRouteFromAndTo(
-         selectedIdStopState, selectedDestinationState
+         endPoint[0],
+         selectedIdStopState,
+         selectedDestinationState
       ), "json")
 
       if (!responseStopInitial) {
