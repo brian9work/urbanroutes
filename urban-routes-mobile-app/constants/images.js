@@ -6,6 +6,9 @@ import transport5 from '../assets/images/version/transport5.jpg';
 import transport6 from '../assets/images/version/transport6.jpg';
 
 import stop from '../assets/icons/stop.png';
+import firsStop from '../assets/icons/firsStop.png';
+import endStop from '../assets/icons/endStop.png';
+import selectedStop from '../assets/icons/selectedStop.png';
 import location from '../assets/icons/my-location.png';
 import university from '../assets/icons/university.png';
 
@@ -20,6 +23,9 @@ export default images = {
     },
     icons: {
         stop: stop,
+        firsStop: firsStop,
+        endStop: endStop,
+        selectedStop: selectedStop,
         location: location,
         university: university,
     }
