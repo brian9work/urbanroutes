@@ -3,7 +3,6 @@ import { ContextHome } from "./Context";
 import { ContextGlobal } from "../ContextGlobal";
 
 export default function Provider ({ children }) {
-    const { distance, endPoint } = useContext(ContextGlobal)
    const selectedMain = useState("NearbyStops");
    const nearbyStopsData = useState([]);
    const transportsForStopData = useState(["",""]);
@@ -18,7 +17,7 @@ export default function Provider ({ children }) {
    const location = useState({
       latitude: 19.41514082532041,
       longitude: -98.14024764753933,
-      distance: distance[0],
+      distance: 500,
       accuracy: 0,
    })
 

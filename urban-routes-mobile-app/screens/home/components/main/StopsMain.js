@@ -11,7 +11,7 @@ import { FontAwesome6 } from '@expo/vector-icons';
 import { ContextGlobal } from '../../../../app/ContextGlobal';
 
 export default function StopsMain() {
-   const { distance, endPoint } = useContext(ContextGlobal)
+   const { endPoint } = useContext(ContextGlobal)
    const { nearbyStopsData, notificationValueChangue, location } = useContext(ContextHome);
    const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;
    const [locationState, setLocationState] = location;

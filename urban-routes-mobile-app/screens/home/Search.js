@@ -9,7 +9,7 @@ import Api from '../../services/api';
 import GET from '../../hooks/GET';
 
 export default function Search() {
-    const { distance, endPoint } = useContext(ContextGlobal)
+    const { endPoint } = useContext(ContextGlobal)
     const { activeMenuSearch, location, facultiesData } = useContext(ContextHome);
     const [activeMenuSearchState, setActiveMenuSearchState] = activeMenuSearch;
     const [faculties, setFaculties] = useState([]);

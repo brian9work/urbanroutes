@@ -2,12 +2,11 @@ import { useState } from "react";
 import { ContextGlobal } from "./ContextGlobal";
 
 export default function ProviderGlobal ({ children }) {
-   const distance = useState("500");
-   const endPoint = useState("https://api.urbanroutes.com.mx/api/");
+   const endPoint = useState("http://3.144.96.83/api");
 
    return (
       <ContextGlobal.Provider value={{
-         distance, endPoint
+         endPoint
       }}>
          {children}
       </ContextGlobal.Provider>

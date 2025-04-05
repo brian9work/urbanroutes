@@ -9,7 +9,7 @@ import Stops from './transport/Stops';
 import { ContextGlobal } from '../../../../app/ContextGlobal';
 
 export default function Transport() {
-   const { distance, endPoint } = useContext(ContextGlobal)
+   const { endPoint } = useContext(ContextGlobal)
    const { selectedIdtransport, infoOfTransport, nearbyStopsData, selectedIdStop, selectedDestination, notificationValueChangue } = useContext(ContextHome);
    const [selectedIdtransportState, setSelectedIdtransportState] = selectedIdtransport;
    const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;

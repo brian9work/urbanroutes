@@ -11,7 +11,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { ContextGlobal } from '../../../../app/ContextGlobal';
 
 export default function TransportsMain() {
-    const { distance, endPoint } = useContext(ContextGlobal)
+    const { endPoint } = useContext(ContextGlobal)
     const { selectedIdStop, transportsForStopData, selectedMain, selectedIdtransport, selectedDestination, notificationValue, notificationValueChangue } = useContext(ContextHome);
     const [selectedIdStopState, setSelectedIdStopState] = selectedIdStop;
     const [transportsForStopDataState, setTransportsForStopDataState] = transportsForStopData;
