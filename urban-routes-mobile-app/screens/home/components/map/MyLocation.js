@@ -21,7 +21,7 @@ export default function MyLocation() {
       const current = {
          latitude: location.coords.latitude,
          longitude: location.coords.longitude,
-         distance: 1000,
+         distance: 500,
          accuracy: location.coords.accuracy,
       }
       console.log("Location: ", current)

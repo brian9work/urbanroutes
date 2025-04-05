@@ -6,7 +6,7 @@ import { ContextHome } from '../../app/home/Context';
 import Empty from '../../components/common/Empty';
 import dataMain from './components/main/mainData'
 import images from '../../constants/images';
-import MyLocation from './components/search/MyLocation';
+import MyLocation from './components/map/MyLocation';
 
 const MapStyle = [
    { "featureType": "administrative", "elementType": "geometry", "stylers": [{ "visibility": "off" }] },
