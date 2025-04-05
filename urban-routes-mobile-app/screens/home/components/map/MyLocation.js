@@ -34,7 +34,7 @@ export default function MyLocation() {
    }
 
    useEffect(() => {
-      getLocation()
+      // getLocation()
    }, [])
 
    return (
