@@ -1,14 +1,16 @@
-import { View, Text, TextInput, Alert } from 'react-native'
+import { View, Text, TextInput, Alert, Switch, Pressable, Linking, Platform } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { Picker } from '@react-native-picker/picker';
 import { Feather, MaterialCommunityIcons, Octicons } from '@expo/vector-icons';
 import { PrimaryButton } from '../../../components/common/Buttom';
 import STORAGE from '../../../hooks/STORAGE';
 import { ContextHome } from '../../../app/home/Context';
+import * as Location from 'expo-location';
 
 export default function Form() {
-//    const { notificationValueChangue } = useContext(ContextHome);
-    
+    const [locationActive, setLocationActive] = useState(false);
+    //    const { notificationValueChangue } = useContext(ContextHome);
+
     const [urlApi, onChangeUrlApi] = useState('');
 
     const range = [100, 200, 300, 400, 500, 600, 800, 1000, 1500];
@@ -29,6 +31,17 @@ export default function Form() {
         }
     }
 
+    const checkLocationServices = async () => {
+        const servicesEnabled = await Location.getForegroundPermissionsAsync();
+        console.log("Location services enabled: ", servicesEnabled);
+
+        if (servicesEnabled.status !== "granted") {
+            setLocationActive(false);
+        } else {
+            setLocationActive(true);
+        }
+    };
+
     const getStorage = async () => {
         const endPoint = await STORAGE.endPoint.get()
         const distance = await STORAGE.distance.get()
@@ -38,13 +51,18 @@ export default function Form() {
 
     }
 
+    const openTools = async () => {
+        await Linking.openSettings();
+    }
+
     useEffect(() => {
         getStorage()
+        checkLocationServices()
     }, [])
 
 
     return (
-        <View className="mt-5 w-11/12 mx-auto">
+        <View className="mt-5 mx-auto px-8 pb-10">
             <View className="mt-5">
                 <View className="flex items-center flex-row">
                     <Octicons
@@ -95,15 +113,29 @@ export default function Form() {
                         </Picker>
                     </View>
                 </View>
-
-
-                <View className="mt-10">
-                    <PrimaryButton fun={() => {
-                        setStorage()
-                    }}>Guardar Datos</PrimaryButton>
-                </View>
-
             </View>
+
+            <Pressable
+                className="mt-3 flex flex-row items-center justify-between"
+                onPressOut={() => {
+                    openTools()
+                }}>
+                <View >
+                    <Text className=" text-lg font-medium">Compartir ubicacion</Text>
+                    <Text className=" text-app-secondary">Permita acceso al GPS</Text>
+                </View>
+                <View className={`flex ${locationActive ? "bg-app-primary" : "bg-common-red"} p-1 w-14 rounded-full`}>
+                    <View className={`w-7 h-7 rounded-full ${locationActive ? "ml-auto" : "mr-auto"} bg-white`}></View>
+                </View>
+            </Pressable>
+
+
+            <View className="mt-10">
+                <PrimaryButton fun={() => {
+                    setStorage()
+                }}>Guardar Datos</PrimaryButton>
+            </View>
+
         </View>
     )
 }
