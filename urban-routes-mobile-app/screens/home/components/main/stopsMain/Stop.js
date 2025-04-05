@@ -5,8 +5,8 @@ import { ContextHome } from '../../../../../app/home/Context';
 import { AntDesign, Feather, FontAwesome5 } from '@expo/vector-icons';
 
 export default function Stop({ stop }) {
-   const { selectedIdStop, selectedMain } = useContext(ContextHome);
-   const [selectedIdStopState, setSelectedIdStopState] = selectedIdStop;
+   const { selectedStop, selectedMain } = useContext(ContextHome);
+   const [selectedStopState, setSelectedStopState] = selectedStop;
    const [selectedMainState, setSelectedMainState] = selectedMain;
 
    const distance = parseFloat(stop.distance).toFixed(0)
@@ -14,7 +14,7 @@ export default function Stop({ stop }) {
    return (
       <Pressable className="rounded-3xl bg-white p-3 mb-5 border-2 border-gray-200"
          onPress={() => {
-            setSelectedIdStopState(stop.stopId)
+            setSelectedStopState(stop)
             setSelectedMainState(dataMain.TransportsMain)
          }}
       >

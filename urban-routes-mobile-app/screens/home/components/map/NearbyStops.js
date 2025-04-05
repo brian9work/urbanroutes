@@ -6,8 +6,8 @@ import { Marker } from 'react-native-maps';
 import dataMain from '../../components/main/mainData'
 
 export default function NearbyStops({ }) {
-   const { selectedIdStop, selectedMain, activeMenu, nearbyStopsData } = useContext(ContextHome);
-   const [selectedIdStopState, setSelectedIdStopState] = selectedIdStop;
+   const { selectedStop, selectedMain, activeMenu, nearbyStopsData } = useContext(ContextHome);
+   const [selectedIdStopState, setSelectedStopState] = selectedStop;
    const [selectedMainState, setSelectedMainState] = selectedMain;
    const [activeMenuState, setActiveMenuState] = activeMenu;
    const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;
@@ -27,7 +27,7 @@ export default function NearbyStops({ }) {
                             title={stop.stopName + " - " + stop.stopId}
                             description={`A ${parseFloat(stop.distance).toFixed(0)} metros de ti`}
                             onPress={() => {
-                                setSelectedIdStopState(stop.stopId)
+                                setSelectedStopState(stop)
                                 setSelectedMainState(dataMain.TransportsMain)
                                 setActiveMenuState(false)
                             }}

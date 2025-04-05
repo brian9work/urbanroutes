@@ -6,7 +6,7 @@ export default function Provider ({ children }) {
    const selectedMain = useState("NearbyStops");
    const nearbyStopsData = useState([]);
    const transportsForStopData = useState(["",""]);
-   const selectedIdStop = useState(0);
+   const selectedStop = useState(0);
    const selectedIdtransport = useState(0);
    const infoOfTransport = useState({route:[]});
    const activeMenu = useState(true);
@@ -47,7 +47,7 @@ export default function Provider ({ children }) {
          selectedMain,
          nearbyStopsData,
          transportsForStopData,
-         selectedIdStop,
+         selectedStop,
          selectedIdtransport,
          infoOfTransport,
          activeMenu,

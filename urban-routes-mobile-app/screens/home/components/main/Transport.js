@@ -10,10 +10,10 @@ import { ContextGlobal } from '../../../../app/ContextGlobal';
 
 export default function Transport() {
    const { endPoint } = useContext(ContextGlobal)
-   const { selectedIdtransport, infoOfTransport, nearbyStopsData, selectedIdStop, selectedDestination, notificationValueChangue } = useContext(ContextHome);
+   const { selectedIdtransport, infoOfTransport, nearbyStopsData, selectedStop, selectedDestination, notificationValueChangue } = useContext(ContextHome);
    const [selectedIdtransportState, setSelectedIdtransportState] = selectedIdtransport;
    const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;
-   const [selectedIdStopState, setSelectedIdStopStateState] = selectedIdStop;
+   const [selectedStopState, setSelectedStopState] = selectedStop;
    const [selectedDestinationState, setSelectedDestinationState] = selectedDestination;
    const [data, setData] = infoOfTransport;
 
@@ -25,7 +25,7 @@ export default function Transport() {
       const responseTransport = await GET(Api.transport.getTransportBeetwenTwoStops(
          endPoint[0],
          selectedIdtransportState,
-         selectedIdStopState,
+         selectedStopState.id,
          selectedDestinationState
       ), "json")
 
@@ -39,7 +39,7 @@ export default function Transport() {
 
       const responseStopInitial = await GET(Api.stopRoutes.getStopRouteFromAndTo(
          endPoint[0],
-         selectedIdStopState,
+         selectedStopState.id,
          selectedDestinationState
       ), "json")
 
