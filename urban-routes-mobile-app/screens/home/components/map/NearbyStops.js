@@ -35,7 +35,7 @@ export default function NearbyStops({ }) {
                             <Image
                                 source={images.icons.stop}
                                 className="object-cover object-center"
-                                style={{ width: 60, height: 60 }}
+                                style={{ width: 40, height: 40 }}
                             />
                         </Marker>
                     )

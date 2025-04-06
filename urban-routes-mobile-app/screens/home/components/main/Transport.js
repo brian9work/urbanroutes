@@ -25,7 +25,7 @@ export default function Transport() {
       const responseTransport = await GET(Api.transport.getTransportBeetwenTwoStops(
          endPoint[0],
          selectedIdtransportState,
-         selectedStopState.id,
+         selectedStopState.stopId,
          selectedDestinationState
       ), "json")
 
@@ -39,7 +39,7 @@ export default function Transport() {
 
       const responseStopInitial = await GET(Api.stopRoutes.getStopRouteFromAndTo(
          endPoint[0],
-         selectedStopState.id,
+         selectedStopState.stopId,
          selectedDestinationState
       ), "json")
 

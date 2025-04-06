@@ -22,9 +22,7 @@ export default function Form() {
             await STORAGE.distance.set(distance)
             // notificationValueChangue("Datos guardados correctamente.", "success")
             Alert.alert("Datos guardados correctamente.")
-            console.log("Datos guardados correctamente.")
         } catch (error) {
-            console.warn("Error al almacenar los datos en el almacenamiento local.")
             Alert.alert("Error al almacenar los datos en el almacenamiento local.")
             console.log(error)
             // notificationValueChangue("Error al guardar.")
@@ -33,7 +31,6 @@ export default function Form() {
 
     const checkLocationServices = async () => {
         const servicesEnabled = await Location.getForegroundPermissionsAsync();
-        console.log("Location services enabled: ", servicesEnabled);
 
         if (servicesEnabled.status !== "granted") {
             setLocationActive(false);

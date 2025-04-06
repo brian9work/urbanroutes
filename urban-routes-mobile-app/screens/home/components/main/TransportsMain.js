@@ -20,7 +20,7 @@ export default function TransportsMain() {
     const getNearbyTransports = async () => {
         const response = await GET(Api.nearby.selectedStop(
             endPoint[0],
-            selectedStopState.id
+            selectedStopState.stopId
         ), "json")
 
         if (!response) {
@@ -37,7 +37,7 @@ export default function TransportsMain() {
 
     useEffect(() => {
         getNearbyTransports()
-    }, [selectedStopState.id])
+    }, [selectedStopState.stopId])
 
     if (loading) {
         return (<>
@@ -50,7 +50,7 @@ export default function TransportsMain() {
 
     if (!loading && transportsForStopDataState.length === 0) {
         return (<>
-            <Title>Transportes disponibles: {selectedStopState.id}</Title>
+            <Title>Transportes disponibles: {selectedStopState.stopId}</Title>
             <Empty
                 message='Lo sentimos no hay transportes que pasen por esta base'
                 description='Intente moverse seleccionar otra base'
@@ -66,7 +66,7 @@ export default function TransportsMain() {
                         <FontAwesome5 name="bus" size={20} color="#0d6cf2" />
                     </View>
                     <Text className="">
-                        Transportes #{selectedStopState.id}
+                        Transportes #{selectedStopState.stopId}
                     </Text>
                 </Text>
             </View>
