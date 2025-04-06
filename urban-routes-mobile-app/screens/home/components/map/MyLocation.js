@@ -24,7 +24,6 @@ export default function MyLocation() {
          distance: 500,
          accuracy: location.coords.accuracy,
       }
-      console.log("Location: ", current)
       setLocationState({
          latitude: current.latitude,
          longitude: current.longitude,
