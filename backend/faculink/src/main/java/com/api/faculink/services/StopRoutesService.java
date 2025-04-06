@@ -34,6 +34,9 @@ public class StopRoutesService {
         stopRouteDTO.setStopToLatitude(stopRouteModels.getStopTo().getLongitude());
 
         return stopRouteDTO;
+    }
 
+    public StopRouteModel getStopByStopToAndStopFrom(Long stopTo, Long stopFrom) {
+        return stopRoutesRepository.getByStopFromAndStopTo(stopFrom, stopTo).get(0);
     }
 }

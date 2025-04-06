@@ -36,6 +36,7 @@ public interface ITransportStopRepository extends JpaRepository<TransportStopMod
             "SELECT  " +
             "    t.id AS transport_id, " +
             "    t.name AS transport_name, " +
+            "    t.frequency AS transport_frequency, " +
             "    s.id AS stop_id, " +
             "    s.name AS stop_name, " +
             "    ROW_NUMBER() OVER (PARTITION BY t.id ORDER BY ts.id) AS stop_order " +
@@ -61,8 +62,8 @@ public interface ITransportStopRepository extends JpaRepository<TransportStopMod
             "    ) " +
             "ORDER BY  " +
             "    t.id,  " +
-            "    stop_order", nativeQuery = true)
-    List<Object[]> getRouteBetweenTwoStops(@Param("originStop") Long originStop, @Param("destinationStop") Long destinationStop);
+            "    stop_order DESC", nativeQuery = true)
+    List<Object[]> getRouteForFaculty(@Param("originStop") Long originStop, @Param("destinationStop") Long destinationStop);
 
 
     @Query("SELECT ts, s FROM TransportStopModel ts " +
