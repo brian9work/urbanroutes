@@ -2,13 +2,21 @@ import { useContext, useState } from "react";
 import { ContextHome } from "./Context";
 import { ContextGlobal } from "../ContextGlobal";
 
-export default function Provider ({ children }) {
+export default function Provider({ children }) {
    const selectedMain = useState("NearbyStops");
    const nearbyStopsData = useState([]);
-   const transportsForStopData = useState(["",""]);
-   const selectedStop = useState(0);
+   const transportsForStopData = useState(["", ""]);
+   const selectedStop = useState(
+      {  distance: 0, 
+         latitude: 19.41514082532041,
+         longitude: -98.14024764753933,
+         stopId: 1, 
+         stopImagen: "", 
+         stopName: "My location" 
+      }
+   );
    const selectedIdtransport = useState(0);
-   const infoOfTransport = useState({route:[]});
+   const infoOfTransport = useState({ route: [] });
    const activeMenu = useState(true);
    const activeMenuSearch = useState(false);
    const selectedDestination = useState(0);
@@ -29,16 +37,16 @@ export default function Provider ({ children }) {
       distance: 0,
    })
 
-   const notificationValue= useState({
+   const notificationValue = useState({
       value: false,
       type: "success",
-      message : "Este es un texto de prueba de una notificacion"
+      message: "Este es un texto de prueba de una notificacion"
    })
 
-   const notificationValueChangue = (message="Esperando mensaje", type="") => {
-      notificationValue[1]({ value: true, message : message, type: type })
+   const notificationValueChangue = (message = "Esperando mensaje", type = "") => {
+      notificationValue[1]({ value: true, message: message, type: type })
       setTimeout(() => {
-         notificationValue[1]({ value: false, message : message, type: type })
+         notificationValue[1]({ value: false, message: message, type: type })
       }, 10000)
    }
 
