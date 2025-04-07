@@ -129,10 +129,11 @@ const ComponentFacultades = ({ facultad, location, activeMenuSearch }) => {
     return (
         <Pressable className="flex flex-row bg-white items-center mb-2 py-4 rounded-3xl border-2 border-gray-200"
             onPressOut={() => {
+                console.log("Facultad seleccionada: ", facultad)
                 location[1]({
                     latitude: facultad.latitude,
                     longitude: facultad.longitude,
-                    distance: 150
+                    distance: 500
                 })
                 activeMenuSearch[1](false)
             }}

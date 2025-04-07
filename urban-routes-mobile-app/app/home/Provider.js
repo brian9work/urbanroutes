@@ -7,14 +7,19 @@ export default function Provider({ children }) {
    const nearbyStopsData = useState([]);
    const transportsForStopData = useState(["", ""]);
    const selectedStop = useState(
-      {  distance: 0, 
+      {
+         distance: 0,
          latitude: 19.41514082532041,
          longitude: -98.14024764753933,
-         stopId: 1, 
-         stopImagen: "", 
-         stopName: "My location" 
+         stopId: 1,
+         stopImagen: "",
+         stopName: "My location"
       }
    );
+
+   const selectedStopSearchBeggin = useState({})
+   const selectedStopSearchEnd = useState({})
+
    const selectedIdtransport = useState(0);
    const infoOfTransport = useState({ route: [] });
    const activeMenu = useState(true);
@@ -62,6 +67,9 @@ export default function Provider({ children }) {
          activeMenuSearch,
          selectedDestination,
          facultiesData,
+
+         selectedStopSearchBeggin,
+         selectedStopSearchEnd,
 
          location,
 

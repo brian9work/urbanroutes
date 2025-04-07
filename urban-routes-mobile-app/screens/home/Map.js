@@ -12,6 +12,7 @@ import NearbyStopsForFaculty from './components/map/NearbyStopsForFaculty';
 import FacultyBorder from './components/map/FacultyBorder';
 import RouteSelected from './components/map/RouteSelected';
 import SelectedStopMarker from './components/map/SelectedStopMarker';
+import SearchPublicTransportMarker from './components/map/SearchPublicTransportMarker';
 
 const MapStyle = [
    { "featureType": "administrative", "elementType": "geometry", "stylers": [{ "visibility": "off" }] },
@@ -69,6 +70,7 @@ export default function Map() {
                <NearbyStopsForFaculty />
                <FacultyBorder />
                <SelectedStopMarker />
+               <SearchPublicTransportMarker />
             </MapView>
          </View>
       </View>

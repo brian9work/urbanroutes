@@ -10,7 +10,7 @@ import { ContextGlobal } from '../../../../../app/ContextGlobal';
 
 export default function Pickers({ stops }) {
    const { endPoint } = useContext(ContextGlobal)
-   const { notificationValueChangue } = useContext(ContextHome);
+   const { notificationValueChangue, selectedStopSearchBeggin, selectedStopSearchEnd } = useContext(ContextHome);
 
    const [selectedOpcionValueFrom, setSelectedOpcionValueFrom] = useState(stops[0].id);
    const [selectedOpcionValueTo, setSelectedOpcionValueTo] = useState(stops[stops.length - 1].id);
@@ -49,6 +49,18 @@ export default function Pickers({ stops }) {
 
    useEffect(() => {
       calculate()
+      selectedStopSearchBeggin[1]({
+         id: selectedOpcionValueFrom,
+         name: stops.find(stop => stop.id === selectedOpcionValueFrom).name,
+         latitude: stops.find(stop => stop.id === selectedOpcionValueFrom).latitude,
+         longitude: stops.find(stop => stop.id === selectedOpcionValueFrom).longitude,
+      })
+      selectedStopSearchEnd[1]({
+         id: selectedOpcionValueTo,
+         name: stops.find(stop => stop.id === selectedOpcionValueTo).name,
+         latitude: stops.find(stop => stop.id === selectedOpcionValueTo).latitude,
+         longitude: stops.find(stop => stop.id === selectedOpcionValueTo).longitude,
+      })
    }, [])
 
 
@@ -63,11 +75,13 @@ export default function Pickers({ stops }) {
                text="Origen"
                stops={stops}
                states={[selectedOpcionValueFrom, setSelectedOpcionValueFrom]}
+               selectedStop={selectedStopSearchBeggin}
             />
             <PickerComponent
                text="Destino"
                stops={stops}
                states={[selectedOpcionValueTo, setSelectedOpcionValueTo]}
+               selectedStop={selectedStopSearchEnd}
             />
 
             <View className="flex flex-row gap-2 mt-8 mx-auto">

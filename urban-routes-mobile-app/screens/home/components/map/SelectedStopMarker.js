@@ -12,9 +12,6 @@ export default function SelectedStopMarker() {
         longitude: -98.14024764753933,
     })
 
-
-    console.log("SelectedStopMarker", selectedStop)
-
     useEffect(() => {
         coordinate[1]({
             latitude: selectedStop[0].latitude,
@@ -27,8 +24,6 @@ export default function SelectedStopMarker() {
             coordinate={{
                 latitude: parseFloat(coordinate[0].latitude),
                 longitude: parseFloat(coordinate[0].longitude),
-                // latitude: 19.41514082532041,
-                // longitude: -98.14024764753933,
             }}
             title='Mi ubicación'
         >
