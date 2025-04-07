@@ -8,11 +8,6 @@ import images from '../../../../constants/images';
 export default function SearchPublicTransportMarker() {
   const { selectedStopSearchBeggin, selectedStopSearchEnd, selectedMain} = useContext(ContextHome);
 
-  console.log("selectedStopSearchBeggin", selectedStopSearchBeggin[0])
-  console.log("selectedStopSearchEnd", selectedStopSearchEnd[0])
-
-  // return (<></>)
-
   return (
     <>
       {selectedStopSearchBeggin[0].latitude === undefined || selectedMain[0]!==mainData.Transport ? null : (
