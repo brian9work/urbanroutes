@@ -29,8 +29,7 @@ export default function Main() {
          <ScrollView 
             className="h-96"
          >
-            <RouteToFacilty />
-            {/* <SelectedMainComponent selected={selectedMainState} /> */}
+            <SelectedMainComponent selected={selectedMainState} />
          </ScrollView>
       </View>
    )

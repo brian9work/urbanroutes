@@ -37,6 +37,12 @@ export default function Transport() {
          return
       }
 
+      console.log(Api.stopRoutes.getStopRouteFromAndTo(
+         endPoint[0],
+         selectedStopState.stopId,
+         selectedDestinationState
+      ))
+
       const responseStopInitial = await GET(Api.stopRoutes.getStopRouteFromAndTo(
          endPoint[0],
          selectedStopState.stopId,

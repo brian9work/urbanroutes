@@ -4,6 +4,7 @@ import { ContextGlobal } from "../ContextGlobal";
 
 export default function Provider({ children }) {
    const selectedMain = useState("NearbyStops");
+   // const selectedMain = useState("RouteToFacilty");
    const nearbyStopsData = useState([]);
    const transportsForStopData = useState(["", ""]);
    const selectedStop = useState(

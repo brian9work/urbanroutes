@@ -35,6 +35,11 @@ export default function index() {
             return true;
          }
 
+         if (selectedMainState === dataMain.RouteToFacilty ){
+            setSelectedMainState(dataMain.BusesMain)
+            return true;
+         }
+
          if (selectedMainState === dataMain.BusesMain) {
             if (activeMenuState === false) setActiveMenuState(!activeMenuState)
             return true;

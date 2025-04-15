@@ -24,8 +24,8 @@ const Api ={
         getTransportBeetwenTwoStops : (originStatic="http://3.144.96.83/api", idTransport, originStop, destinationStop) => {
             return `${originStatic}/transport?idTransport=${idTransport}&originStop=${originStop}&destinationStop=${destinationStop}`;
         },
-        getrouteForFaculty: (originStatic="http://3.144.96.83/api", originStop, destinationStop) => {
-            return `${originStatic}/routeForFaculty?originStop=${originStop}&destinationStop=${destinationStop}`;
+        getRouteForFaculty: (originStatic="http://3.144.96.83/api", originStop, destinationStop) => {
+            return `${originStatic}/transport/routeForFaculty?originStop=${originStop}&destinationStop=${destinationStop}`;
         }
     },
     catalogs: {

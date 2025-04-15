@@ -6,11 +6,12 @@ import { ContextGlobal } from '../../app/ContextGlobal';
 import { AntDesign, FontAwesome5, FontAwesome6, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import CloseMenuSearch from './components/main/buttons/CloseMenuSearch';
 import Api from '../../services/api';
+import dataMain from './components/main/mainData'
 import GET from '../../hooks/GET';
 
 export default function Search() {
     const { endPoint } = useContext(ContextGlobal)
-    const { activeMenuSearch, location, facultiesData } = useContext(ContextHome);
+    const { activeMenuSearch, location, facultiesData, selectedMain, activeMenu } = useContext(ContextHome);
     const [activeMenuSearchState, setActiveMenuSearchState] = activeMenuSearch;
     const [faculties, setFaculties] = useState([]);
     const [facultiesDataState, setFacultiesDataState] = facultiesData;
@@ -89,6 +90,9 @@ export default function Search() {
                                     facultad={facultad}
                                     location={location}
                                     activeMenuSearch={activeMenuSearch}
+                                    selectedMain={selectedMain}
+                                    dataMain={dataMain.RouteToFacilty}
+                                    activeMenu={activeMenu}
                                 />
                             )
                         })}
@@ -125,7 +129,7 @@ const Reboot = ({ location, activeMenuSearch }) => {
         </Pressable>
     )
 }
-const ComponentFacultades = ({ facultad, location, activeMenuSearch }) => {
+const ComponentFacultades = ({ facultad, location, activeMenuSearch, selectedMain, dataMain, activeMenu }) => {
     return (
         <Pressable className="flex flex-row bg-white items-center mb-2 py-4 rounded-3xl border-2 border-gray-200"
             onPressOut={() => {
@@ -135,6 +139,8 @@ const ComponentFacultades = ({ facultad, location, activeMenuSearch }) => {
                     distance: 500
                 })
                 activeMenuSearch[1](false)
+                activeMenu[1](false)
+                selectedMain[1](dataMain)
             }}
         >
             <View className="w-[20%] flex justify-center items-center">
