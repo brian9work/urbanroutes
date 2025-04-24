@@ -18,7 +18,7 @@ export default function Search() {
     const [loading, setLoading] = useState(true);
 
     const getFaculties = async () => {
-        const response = await GET(Api.catalogs.getFaculties(endPoint[0]), "json")
+        const response = await GET(Api.catalogs.getFaculties(), "json")
 
         if (!response) {
             console.warn("Error al obtener las facultades disponibles.")

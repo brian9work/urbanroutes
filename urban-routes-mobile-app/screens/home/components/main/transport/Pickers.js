@@ -9,7 +9,6 @@ import { ContextHome } from '../../../../../app/home/Context';
 import { ContextGlobal } from '../../../../../app/ContextGlobal';
 
 export default function Pickers({ stops }) {
-   const { endPoint } = useContext(ContextGlobal)
    const { notificationValueChangue } = useContext(ContextHome);
 
    const [selectedOpcionValueFrom, setSelectedOpcionValueFrom] = useState(stops[0].id);
@@ -28,7 +27,6 @@ export default function Pickers({ stops }) {
       }
 
       const response = await GET(Api.stopRoutes.getStopRouteFromAndTo(
-         endPoint[0],
          selectedOpcionValueFrom,
          selectedOpcionValueTo
       ), "json")
