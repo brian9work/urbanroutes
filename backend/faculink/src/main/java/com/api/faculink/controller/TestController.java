@@ -14,7 +14,7 @@ public class TestController {
     @CrossOrigin(origins = "*")
     @GetMapping
     public ResponseStatusException inService() {
-        return new ResponseStatusException(HttpStatus.OK, "En servicio");
+        return new ResponseStatusException(HttpStatus.OK, "Faculink on service");
     }
 
     @CrossOrigin(origins = "*")
