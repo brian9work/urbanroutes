@@ -11,7 +11,6 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { ContextGlobal } from '../../../../app/ContextGlobal';
 
 export default function TransportsMain() {
-    const { endPoint } = useContext(ContextGlobal)
     const { selectedStop, transportsForStopData, selectedMain, selectedIdtransport, selectedDestination, notificationValue, notificationValueChangue } = useContext(ContextHome);
     const [selectedStopState, setSelectedStopState] = selectedStop;
     const [transportsForStopDataState, setTransportsForStopDataState] = transportsForStopData;
@@ -19,7 +18,6 @@ export default function TransportsMain() {
 
     const getNearbyTransports = async () => {
         const response = await GET(Api.nearby.selectedStop(
-            endPoint[0],
             selectedStopState.stopId
         ), "json")
 

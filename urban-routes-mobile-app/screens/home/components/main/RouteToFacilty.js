@@ -8,7 +8,6 @@ import { ContextHome } from '../../../../app/home/Context'
 import Skeleton from './routeToFacilty/Skeleton'
 
 export default function RouteToFacilty() {
-    const { endPoint } = useContext(ContextGlobal)
     const { nearbyStopsData, notificationValueChangue, location, selectedStop } = useContext(ContextHome);
     const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;
     const [locationState, setLocationState] = location;
@@ -20,7 +19,6 @@ export default function RouteToFacilty() {
         console.log(selectedStop)
 
         const nearbyStop = await GET(Api.nearby.stops(
-            endPoint[0],
             19.415401561402106, -98.14000874533764, 500
             // locationState.latitude,
             // locationState.longitude,
@@ -28,13 +26,12 @@ export default function RouteToFacilty() {
         ), "json")
 
         const nearbyFaculty = await GET(Api.nearby.stops(
-            endPoint[0],
             19.417996111693196,
             -98.12705375871312,
             500,
         ), "json")
 
-        let Route = await GET(Api.transport.getRouteForFaculty(endPoint[0],
+        let Route = await GET(Api.transport.getRouteForFaculty(
             nearbyStop[0].stopId,
             nearbyFaculty[0].stopId
         ), "json")
@@ -43,7 +40,6 @@ export default function RouteToFacilty() {
             console.warn(i)
             i++;
             Route = await GET(Api.transport.getRouteForFaculty(
-                endPoint[0],
                 nearbyStop[i].stopId,
                 nearbyFaculty[0].stopId,
             ), "json")

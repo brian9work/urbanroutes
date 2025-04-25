@@ -10,7 +10,6 @@ import dataMain from './components/main/mainData'
 import GET from '../../hooks/GET';
 
 export default function Search() {
-    const { endPoint } = useContext(ContextGlobal)
     const { activeMenuSearch, location, facultiesData, selectedMain, activeMenu } = useContext(ContextHome);
     const [activeMenuSearchState, setActiveMenuSearchState] = activeMenuSearch;
     const [faculties, setFaculties] = useState([]);
@@ -19,7 +18,7 @@ export default function Search() {
     const [loading, setLoading] = useState(true);
 
     const getFaculties = async () => {
-        const response = await GET(Api.catalogs.getFaculties(endPoint[0]), "json")
+        const response = await GET(Api.catalogs.getFaculties(), "json")
 
         if (!response) {
             console.warn("Error al obtener las facultades disponibles.")

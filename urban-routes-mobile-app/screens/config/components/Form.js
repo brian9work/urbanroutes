@@ -18,7 +18,6 @@ export default function Form() {
 
     const setStorage = async () => {
         try {
-            await STORAGE.endPoint.set(urlApi)
             await STORAGE.distance.set(distance)
             // notificationValueChangue("Datos guardados correctamente.", "success")
             Alert.alert("Datos guardados correctamente.")
@@ -40,10 +39,8 @@ export default function Form() {
     };
 
     const getStorage = async () => {
-        const endPoint = await STORAGE.endPoint.get()
         const distance = await STORAGE.distance.get()
 
-        onChangeUrlApi(endPoint)
         onChangeDistance(distance)
 
     }
@@ -70,23 +67,6 @@ export default function Form() {
                     <Text className="font-bold text-2xl ml-3">Configuraciones del sistema</Text>
                 </View>
                 <Text className="text-app-secondary mt-1">Configure los parámetros básicos del sistema</Text>
-            </View>
-
-
-            <View className="mt-5">
-                <Text className=" text-lg font-medium">URL del endpoint</Text>
-                <View className="flex flex-row items-center border-2 ps-4 border-gray-200 bg-white rounded-xl">
-                    <Feather name="globe" size={24} color="#888" />
-                    <View className="w-11/12 pl-3">
-                        <TextInput
-                            onChangeText={onChangeUrlApi}
-                            value={urlApi}
-                            placeholder='https://api.ejemplo.com/api'
-                        />
-                    </View>
-                </View>
-
-                <Text className="text-app-secondary mt-1">Ingrese la URL completa incluyendo el protocolo https</Text>
             </View>
 
 

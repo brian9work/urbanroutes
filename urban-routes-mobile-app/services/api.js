@@ -1,5 +1,5 @@
 import { config } from '../config'
-// const originStatic = config.SERVER_URL;
+const originStatic = config.SERVER_URL;
 
 export const actualVersion = "0.1.0";
 
@@ -10,31 +10,31 @@ const Api ={
         verifyVersion: () =>  `https://brian9work.github.io/static/Api/version4.json`,
     },
     nearby: {
-        stops: (originStatic="http://3.144.96.83/api", latitude, longitude, distance) => {
+        stops: (latitude, longitude, distance) => {
             return `${originStatic}/nearby/v2?latitude=${latitude}&longitude=${longitude}&distance=${distance}`;
         },
-        selectedStop: (originStatic="http://3.144.96.83/api", idStop) => {
+        selectedStop: (idStop) => {
             return `${originStatic}/nearby/${idStop}`;
         }
     },
     transport: {
-        getTransport : (originStatic="http://3.144.96.83/api", idTransport) => {
+        getTransport : (idTransport) => {
             return `${originStatic}/transport/${idTransport}`;
         },
-        getTransportBeetwenTwoStops : (originStatic="http://3.144.96.83/api", idTransport, originStop, destinationStop) => {
+        getTransportBeetwenTwoStops : (idTransport, originStop, destinationStop) => {
             return `${originStatic}/transport?idTransport=${idTransport}&originStop=${originStop}&destinationStop=${destinationStop}`;
         },
-        getRouteForFaculty: (originStatic="http://3.144.96.83/api", originStop, destinationStop) => {
+        getRouteForFaculty: (originStop, destinationStop) => {
             return `${originStatic}/transport/routeForFaculty?originStop=${originStop}&destinationStop=${destinationStop}`;
         }
     },
     catalogs: {
-        getFaculties: (originStatic="http://3.144.96.83/api", ) => {
+        getFaculties: () => {
             return `${originStatic}/cat/faculty`;
         }
     },
     stopRoutes: {
-        getStopRouteFromAndTo: (originStatic="http://3.144.96.83/api", stopFrom, stopTo) => {
+        getStopRouteFromAndTo: (stopFrom, stopTo) => {
             return `${originStatic}/stoproute?stopFrom=${stopFrom}&stopTo=${stopTo}`;
         }
     },
