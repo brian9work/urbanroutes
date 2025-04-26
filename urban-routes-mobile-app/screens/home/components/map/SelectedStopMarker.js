@@ -30,7 +30,7 @@ export default function SelectedStopMarker() {
             <Image 
                 source={images.icons.selectedStop}
                 className="object-cover object-center"
-                style={{ width: 50, height: 50, aspectRatio: 1, resizeMode: 'contain' }}
+                style={{ width: 40, height: 40, aspectRatio: 1, resizeMode: 'contain' }}
             />
 
         </Marker>

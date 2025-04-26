@@ -27,7 +27,7 @@ export default function NearbyStopsForFaculty() {
                             <Image
                                 source={images.icons.university}
                                 className="object-cover object-center"
-                                style={{ width: 80, height: 80, aspectRatio: 1, resizeMode: 'contain' }}
+                                style={{ width: 40, height: 40, aspectRatio: 1, resizeMode: 'contain' }}
                             />
                         </Marker>
                     )

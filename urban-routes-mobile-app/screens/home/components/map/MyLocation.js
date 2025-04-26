@@ -48,7 +48,7 @@ export default function MyLocation() {
          <Image
             source={images.icons.location}
             className="object-cover object-center"
-            style={{ width: 110, height: 110 }}
+            style={{ width: 40, height: 40 }}
          />
       </Marker>
    )

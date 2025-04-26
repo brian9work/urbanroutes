@@ -21,7 +21,7 @@ export default function SearchPublicTransportMarker() {
           <Image
             source={images.icons.firsStop}
             className="object-cover object-center"
-            style={{ width: 50, height: 50, aspectRatio: 1, resizeMode: 'contain' }}
+            style={{ width: 40, height: 40, aspectRatio: 1, resizeMode: 'contain' }}
           />
         </Marker>
       )}
@@ -36,7 +36,7 @@ export default function SearchPublicTransportMarker() {
           <Image
             source={images.icons.endStop}
             className="object-cover object-center"
-            style={{ width: 50, height: 50, aspectRatio: 1, resizeMode: 'contain' }}
+            style={{ width: 40, height: 40, aspectRatio: 1, resizeMode: 'contain' }}
           />
         </Marker>
       )}
