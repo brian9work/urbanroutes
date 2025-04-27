@@ -15,8 +15,6 @@ export default function RouteToFacilty() {
     const [loading, setLoading] = useState(true);
 
     const getRoute = async () => {
-        console.log("*****************")
-        console.log(selectedStop)
 
         const nearbyStop = await GET(Api.nearby.stops(
             19.415401561402106, -98.14000874533764, 500
@@ -31,31 +29,33 @@ export default function RouteToFacilty() {
             500,
         ), "json")
 
-        console.log(nearbyStop)
-        console.log(nearbyFaculty)
+
+        let c = 0;
+        let isAvailable = 0;
+
+        while (c < nearbyStop.length) {
+            isAvailable = await GET(Api.stopRoutes.getVerifyRoute(
+                nearbyStop[c].stopId,
+                nearbyFaculty[0].stopId
+            ), "text")
+            console.log(`ruta (${c}): ${nearbyStop[c].stopId} - ${nearbyFaculty[0].stopId} = ${isAvailable}`)
+
+            if (parseInt(isAvailable) !== 0) {
+                break;
+            }
+            c++;
+        }
+
 
         let Route = await GET(Api.transport.getRouteForFaculty(
-            nearbyStop[0].stopId,
+            nearbyStop[2].stopId,
             nearbyFaculty[0].stopId
         ), "json")
 
-        console.log(Route)
-        
-        
-        let i = 1
-        while (Route.length===0) {
-            console.warn(i)
-            i++;
-            Route = await GET(Api.transport.getRouteForFaculty(
-                nearbyStop[i].stopId,
-                nearbyFaculty[0].stopId,
-            ), "json")
-    
-        }
         setData(Route)
         setOrigin({
-            stopId: nearbyStop[i].stopId,
-            name: nearbyStop[i].stopName,
+            stopId: nearbyStop[c].stopId,
+            name: nearbyStop[0].stopName,
         })
 
 
@@ -66,24 +66,24 @@ export default function RouteToFacilty() {
         getRoute()
     }, [])
 
-    if(data)
+    if (data)
 
-    if (loading) {
-        return (<>
-            <View>
-                <Text className="text-4xl font-extrabold mt-5">
-                    <Text>Rumbo a la facultad: </Text>
-                    <Text className="text-app-primary">
-                        FCBIyT
+        if (loading) {
+            return (<>
+                <View>
+                    <Text className="text-4xl font-extrabold mt-5">
+                        <Text>Rumbo a la facultad: </Text>
+                        <Text className="text-app-primary">
+                            FCBIyT
+                        </Text>
                     </Text>
-                </Text>
-            </View>
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-            <Skeleton />
-        </>)
-    }
+                </View>
+                <Skeleton />
+                <Skeleton />
+                <Skeleton />
+                <Skeleton />
+            </>)
+        }
 
     return (
         <View className="">
@@ -100,7 +100,7 @@ export default function RouteToFacilty() {
                     return (
                         <CardRoute
                             key={`faculty-route-${route.stopId}-${route.transportName}`}
-                            route={{...route}}
+                            route={{ ...route }}
                             origin={origin}
                         />
                     )

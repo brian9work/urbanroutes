@@ -26,7 +26,7 @@ export default function PickerComponent({ text, stops, states, selectedStop }) {
                   {stops.map((stop, index) => {
                      return <Picker.Item
                         key={index}
-                        label={"#" + stop.id + " " + stop.name}
+                        label={stop.name}
                         value={stop.id}
                      />;
                   })}
