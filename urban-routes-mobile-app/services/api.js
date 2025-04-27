@@ -36,6 +36,9 @@ const Api ={
     stopRoutes: {
         getStopRouteFromAndTo: (stopFrom, stopTo) => {
             return `${originStatic}/stoproute?stopFrom=${stopFrom}&stopTo=${stopTo}`;
+        },
+        getVerifyRoute: (stopFrom, stopTo) => {
+            return `${originStatic}/stoproute/verify?stopFrom=${stopFrom}&stopTo=${stopTo}`;
         }
     },
 }
