@@ -10,7 +10,6 @@ import ContextGlobal from '../../../../../app/ContextGlobal';
 
 export default function Pickers({ stops }) {
    const { notificationValueChangue, selectedStopSearchBeggin, selectedStopSearchEnd } = useContext(ContextHome);
-
    const [selectedOpcionValueFrom, setSelectedOpcionValueFrom] = useState(stops[0].id);
    const [selectedOpcionValueTo, setSelectedOpcionValueTo] = useState(stops[stops.length - 1].id);
 

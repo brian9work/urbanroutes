@@ -253,8 +253,37 @@ public class TransportService {
     }
 
 
-    public List<Object[]> getRouteBetweenTwoStops(Long originStop, Long destinationStop) {
-        return transportStopRepository.getRouteBetweenTwoStops(originStop, destinationStop);
+    public List<RouteForFacultyDTO> getRouteForFaculty(Long originStop, Long destinationStop) {
+        List<Object[]> TSR = transportStopRepository.getRouteForFaculty(originStop, destinationStop);
+        List<RouteForFacultyDTO> routeForFacultyDTO = new ArrayList<>();
+
+        Long actualIdTransport = Long.valueOf(0);
+        for (Object[] tsr : TSR) {
+            RouteForFacultyDTO routeForFacultyLocal = new RouteForFacultyDTO();
+
+            Long idTransport = Long.parseLong(tsr[0].toString());
+
+            if(actualIdTransport == idTransport) {
+                continue;
+            }
+
+            routeForFacultyLocal.setTransportId(idTransport);
+            routeForFacultyLocal.setTransportName(tsr[1].toString());
+            routeForFacultyLocal.setFrequency(tsr[2].toString());
+            routeForFacultyLocal.setStopId(Long.parseLong(tsr[3].toString()));
+            routeForFacultyLocal.setStopName(tsr[4].toString());
+            routeForFacultyLocal.setOrder(Long.parseLong(tsr[5].toString()));
+
+            List<StopRouteModel> srm = stopRoutesRepository.getByStopFromAndStopTo(originStop, destinationStop);
+
+            routeForFacultyLocal.setDistance(srm.get(0).getDistance());
+            routeForFacultyLocal.setPrice(srm.get(0).getPrice());
+            routeForFacultyLocal.setTime(srm.get(0).getTime());
+
+            actualIdTransport = idTransport;
+            routeForFacultyDTO.add(routeForFacultyLocal);
+        }
+        return routeForFacultyDTO;
     }
 
 

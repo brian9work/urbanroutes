@@ -11,12 +11,19 @@ public class StopRounteController {
     @Autowired
     private StopRoutesService stopRoutesService;
 
-    @CrossOrigin(origins = "*")
     @GetMapping
     public StopRouteDTO getStopByStopFromAndStopTo(
             @RequestParam(defaultValue = "1") Long stopFrom,
             @RequestParam(defaultValue = "18") Long stopTo)
     {
         return stopRoutesService.getStopByStopFromAndStopTo(stopFrom, stopTo);
+    }
+
+    @GetMapping("/verify")
+    public String verifyTravelBetweenStops(
+            @RequestParam(defaultValue = "1") Long stopFrom,
+            @RequestParam(defaultValue = "18") Long stopTo)
+    {
+        return stopRoutesService.verifyTravelBetweenStops(stopFrom, stopTo);
     }
 }
