@@ -7,7 +7,6 @@ export default function InformationInitial({ data, infoStopInitial }) {
         <View className="mt-5">
             <View>
                 <View className="flex flex-row items-center gap-2">
-                    {/* <MaterialCommunityIcons name="bus" size={24} color="black" /> */}
                     <MaterialCommunityIcons name="bus-articulated-front" size={24} color="#0d6cf2" />
                     <Text className="text-base text-app-secondary">Transporte: {data.transportName}</Text>
                 </View>
@@ -36,13 +35,40 @@ export default function InformationInitial({ data, infoStopInitial }) {
                     </View>
                 </View>
                 <View className="mt-4">
-
                     <BoxWhitBorder
                         tit={"Salida cada"}
                         text={data.transportFrequency + "m."}
                         color={"text-common-orange"}
                     />
                 </View>
+            </View>
+        </View>
+    )
+}
+
+export function InformationInitialSkeleton (){
+    return (
+        <View className="mt-5">
+            <View>
+                <View className="flex flex-row items-center gap-2">
+                    <MaterialCommunityIcons name="bus-articulated-front" size={24} color="#0d6cf2" />
+                    <View className="w-32 bg-app-secondary/15 h-4 rounded-lg" />
+                </View>
+                <Text className="text-4xl font-extrabold mt-5">
+                    <View className="w-80 bg-app-secondary/15 h-14 rounded-2xl" />
+                </Text>
+            </View>
+            <View className="mt-5">
+                <View className="flex justify-between flex-row mb-3">
+                    <View className="w-[47%] h-20 bg-app-secondary/15 rounded-xl" />
+                    <View className="w-[47%] h-20 bg-app-secondary/15 rounded-xl" />
+                </View>
+                <View className="mt-4">
+                    <View className="w-full h-20 bg-app-secondary/15 rounded-xl" />
+                </View>
+            </View>
+            <View className="mt-16">
+                <View className="w-full h-40 bg-app-secondary/15 rounded-xl" />
             </View>
         </View>
     )

@@ -1,7 +1,7 @@
 import { View, Text, Pressable } from 'react-native'
 import React, { useContext } from 'react'
 import dataMain from '../mainData'
-import { ContextHome } from '../../../../../app/home/Context';
+import ContextHome from '../../../../../app/home/Context';
 import { ClockIcon, MoneyIcon, RouteIcon, TransportIcon } from '../../../../../constants/Icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 

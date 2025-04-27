@@ -26,7 +26,6 @@ export function PrimaryAlert({ title, subtitle, description, children }) {
                 <Text className="text-lg mt-5">{description}</Text>
                 <Buttom className="mt-5"
                     fun={() => {
-                        console.log("Hola")
                         Alert.alert("Hola")
                     }
                     } >Aceptar</Buttom>

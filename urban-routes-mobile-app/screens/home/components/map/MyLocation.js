@@ -1,12 +1,13 @@
 import { View, Text, Image, Alert } from 'react-native'
 import React, { useContext, useEffect } from 'react'
 import *  as Location from 'expo-location';
-import { ContextHome } from '../../../../app/home/Context';
+import ContextHome from '../../../../app/home/Context';
 import { Marker } from 'react-native-maps';
 import images from '../../../../constants/images';
 
 export default function MyLocation() {
-   const { location, notificationValueChangue } = useContext(ContextHome);
+   const { location, notificationValueChangue, originLocation } = useContext(ContextHome);
+   const [originLocationState, setOriginLocationState] = originLocation;
    const [locationState, setLocationState] = location;
 
    const getLocation = async () => {
@@ -24,12 +25,24 @@ export default function MyLocation() {
          distance: 500,
          accuracy: location.coords.accuracy,
       }
-      console.log("Location: ", current)
       setLocationState({
-         latitude: current.latitude,
-         longitude: current.longitude,
-         distance: current.distance,
+         // latitude: current.latitude,
+         // longitude: current.longitude,
+         // distance: current.distance,
+         latitude: 19.415401561402106,
+         longitude: -98.14000874533764,
+         distance: 500,
          accuracy: current.accuracy,
+      })
+      setOriginLocationState({
+         latitude: 19.415401561402106,
+         longitude: -98.14000874533764,
+         distance: 500,
+         accuracy: current.accuracy,
+         // latitude: current.latitude,
+         // longitude: current.longitude,
+         // distance: current.distance,
+         // accuracy: current.accuracy,
       })
    }
 
@@ -40,16 +53,18 @@ export default function MyLocation() {
    return (
       <Marker
          coordinate={{
-            latitude: locationState.latitude,
-            longitude: locationState.longitude,
+            latitude: originLocationState.latitude,
+            longitude: originLocationState.longitude,
          }}
          title='Mi ubicación'
-         // icon={images.icons.location}
+         onPress={() => {
+            setLocationState(originLocationState)
+         }}
       >
          <Image
             source={images.icons.location}
             className="object-cover object-center"
-            style={{ width: 110, height: 110 }}
+            style={{ width: 40, height: 40 }}
          />
       </Marker>
    )

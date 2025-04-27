@@ -39,6 +39,23 @@ export function PrimaryButton({ fun, children, className }) {
         </Pressable>
     )
 }
+export function DesignPrimaryButton({ fun, children, className }) {
+    return (
+            <View 
+                className={`${className} bg-app-primary py-3 rounded-xl border-2 border-app-primary`}
+            >
+                <Text 
+                    className="
+                        text-white/90
+                        text-center
+                        font-bold
+                        uppercase
+                    ">
+                    {children}
+                </Text>
+            </View>
+    )
+}
 export function SecundaryButton({ fun, children, className }) {
     return (
         <Pressable onPress={fun}>

@@ -3,7 +3,7 @@ import React from 'react'
 import { Picker } from '@react-native-picker/picker';
 import Octicons from '@expo/vector-icons/Octicons';
 
-export default function PickerComponent({ text, stops, states }) {
+export default function PickerComponent({ text, stops, states, selectedStop }) {
    const [value, setValue] = states
    return (
       <View className=" mt-4">
@@ -13,12 +13,20 @@ export default function PickerComponent({ text, stops, states }) {
             <View className="w-11/12 ">
                <Picker
                   selectedValue={value}
-                  onValueChange={(itemValue) => setValue(itemValue)}
+                  onValueChange={(itemValue) => {
+                     selectedStop[1]({
+                        name: stops.find((stop) => stop.id === itemValue).name,
+                        latitude: stops.find((stop) => stop.id === itemValue).latitude,
+                        longitude: stops.find((stop) => stop.id === itemValue).longitude,
+                     })
+                     setValue(itemValue)
+                  }
+                  }
                >
                   {stops.map((stop, index) => {
                      return <Picker.Item
                         key={index}
-                        label={"#" + stop.id + " " + stop.name}
+                        label={stop.name}
                         value={stop.id}
                      />;
                   })}

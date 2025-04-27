@@ -11,7 +11,7 @@ const Api ={
     },
     nearby: {
         stops: (latitude, longitude, distance) => {
-            return `${originStatic}/nearby?latitude=${latitude}&longitude=${longitude}&distance=${distance}`;
+            return `${originStatic}/nearby/v2?latitude=${latitude}&longitude=${longitude}&distance=${distance}`;
         },
         selectedStop: (idStop) => {
             return `${originStatic}/nearby/${idStop}`;
@@ -23,6 +23,9 @@ const Api ={
         },
         getTransportBeetwenTwoStops : (idTransport, originStop, destinationStop) => {
             return `${originStatic}/transport?idTransport=${idTransport}&originStop=${originStop}&destinationStop=${destinationStop}`;
+        },
+        getRouteForFaculty: (originStop, destinationStop) => {
+            return `${originStatic}/transport/routeForFaculty?originStop=${originStop}&destinationStop=${destinationStop}`;
         }
     },
     catalogs: {
@@ -32,7 +35,10 @@ const Api ={
     },
     stopRoutes: {
         getStopRouteFromAndTo: (stopFrom, stopTo) => {
-            return `${originStatic}/sr?stopFrom=${stopFrom}&stopTo=${stopTo}`;
+            return `${originStatic}/stoproute?stopFrom=${stopFrom}&stopTo=${stopTo}`;
+        },
+        getVerifyRoute: (stopFrom, stopTo) => {
+            return `${originStatic}/stoproute/verify?stopFrom=${stopFrom}&stopTo=${stopTo}`;
         }
     },
 }
