@@ -1,6 +1,6 @@
 import { View, Text, Pressable } from 'react-native'
 import React, { useContext } from 'react'
-import { ContextHome } from '../../../../../app/home/Context';
+import ContextHome from '../../../../../app/home/Context';
 import dataMain from '../mainData'
 import { Entypo } from '@expo/vector-icons';
 

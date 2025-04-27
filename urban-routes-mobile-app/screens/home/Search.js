@@ -1,16 +1,18 @@
 import { View, Text, TextInput, Pressable } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { ContextHome } from '../../app/home/Context';
-import { ContextGlobal } from '../../app/ContextGlobal';
+import ContextHome from '../../app/home/Context';
+import ContextGlobal from '../../app/ContextGlobal';
 import { AntDesign, FontAwesome5, FontAwesome6, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import CloseMenuSearch from './components/main/buttons/CloseMenuSearch';
 import Api from '../../services/api';
+import dataMain from './components/main/mainData'
 import GET from '../../hooks/GET';
+import Reboot from './components/search/Reboot';
+import ComponentFacultades from './components/search/ComponentFacultades';
 
 export default function Search() {
-    const { endPoint } = useContext(ContextGlobal)
-    const { activeMenuSearch, location, facultiesData } = useContext(ContextHome);
+    const { activeMenuSearch, location, originLocation, facultiesData, selectedMain, activeMenu } = useContext(ContextHome);
     const [activeMenuSearchState, setActiveMenuSearchState] = activeMenuSearch;
     const [faculties, setFaculties] = useState([]);
     const [facultiesDataState, setFacultiesDataState] = facultiesData;
@@ -18,7 +20,7 @@ export default function Search() {
     const [loading, setLoading] = useState(true);
 
     const getFaculties = async () => {
-        const response = await GET(Api.catalogs.getFaculties(endPoint[0]), "json")
+        const response = await GET(Api.catalogs.getFaculties(), "json")
 
         if (!response) {
             console.warn("Error al obtener las facultades disponibles.")
@@ -75,82 +77,19 @@ export default function Search() {
                     <Text className="text-app-secondary text-md">Selecciona una facultad para continuar</Text>
                 </View>
             </View>
-            {
-                loading ? <Text>Cargando Datos .. </Text> :
-                    <View className="w-11/12 mx-auto mt-5">
-                    <Reboot
-                        location={location}
-                        activeMenuSearch={activeMenuSearch}
-                    />
-                        {faculties.map((facultad, index) => {
-                            return (
-                                <ComponentFacultades
-                                    key={"facultad-" + index}
-                                    facultad={facultad}
-                                    location={location}
-                                    activeMenuSearch={activeMenuSearch}
-                                />
-                            )
-                        })}
-                    </View>
-            }
+            {loading ? <Text>Cargando Datos .. </Text> :
+                <View className="w-11/12 mx-auto mt-5">
+                    <Reboot />
+                    {faculties.map((facultad, index) => {
+                        return (
+                            <ComponentFacultades
+                                key={"facultad-" + index}
+                                facultad={facultad}
+                                dataMain={dataMain.RouteToFacilty}
+                            />
+                        )
+                    })}
+                </View>}
         </View>
-    )
-}
-
-const Reboot = ({ location, activeMenuSearch }) => {
-    return (
-        <Pressable className="flex flex-row bg-white items-center mb-5 py-4 rounded-3xl border-2 border-gray-200"
-            onPressOut={() => {
-                location[1]({
-                    latitude: 19.41514082532041,
-                    longitude: -98.14024764753933,
-                    distance: 1000,
-                    accuracy: 0,
-                })
-                activeMenuSearch[1](false)
-            }}
-        >
-            <View className="w-[20%] flex justify-center items-center">
-                <View className=" bg-app-primary/10 p-4 rounded-full">
-                    <Ionicons name="location-outline" size={28} color="#0d6cf2" />
-                </View>
-            </View>
-            <View className="w-[65%]">
-                <Text className="font-bold text-xl">My ubicacion</Text>
-            </View>
-            <View className="w-[15%] ">
-                <AntDesign name="arrowright" size={24} color="#333" />
-            </View>
-        </Pressable>
-    )
-}
-const ComponentFacultades = ({ facultad, location, activeMenuSearch }) => {
-    return (
-        <Pressable className="flex flex-row bg-white items-center mb-2 py-4 rounded-3xl border-2 border-gray-200"
-            onPressOut={() => {
-                location[1]({
-                    latitude: facultad.latitude,
-                    longitude: facultad.longitude,
-                    distance: 150
-                })
-                activeMenuSearch[1](false)
-            }}
-        >
-            <View className="w-[20%] flex justify-center items-center">
-                <View className=" bg-app-primary/10 p-4 rounded-full">
-                    <Ionicons name="school-outline" size={28} color="#0d6cf2" />
-                </View>
-            </View>
-            <View className="w-[65%]">
-                <Text className="font-bold text-xl">{facultad.name}</Text>
-                <View className="bg-app-primary/10 rounded-xl w-20 mt-2">
-                    <Text className="text-app-primary text-center text-sm ">{facultad.acronym}</Text>
-                </View>
-            </View>
-            <View className="w-[15%] ">
-                <AntDesign name="arrowright" size={24} color="#333" />
-            </View>
-        </Pressable>
     )
 }

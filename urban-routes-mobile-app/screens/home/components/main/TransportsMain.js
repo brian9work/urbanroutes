@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
-import { ContextHome } from '../../../../app/home/Context';
+import ContextHome from '../../../../app/home/Context';
 import Api from '../../../../services/api';
 import GET from '../../../../hooks/GET';
 import Title from '../../../../components/common/Title';
@@ -8,19 +8,17 @@ import Empty from '../../../../components/common/Empty';
 import TransportStop from './transportMain/TransportStop';
 import Skeleton from './transportMain/Skeleton';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { ContextGlobal } from '../../../../app/ContextGlobal';
+import ContextGlobal from '../../../../app/ContextGlobal';
 
 export default function TransportsMain() {
-    const { endPoint } = useContext(ContextGlobal)
-    const { selectedIdStop, transportsForStopData, selectedMain, selectedIdtransport, selectedDestination, notificationValue, notificationValueChangue } = useContext(ContextHome);
-    const [selectedIdStopState, setSelectedIdStopState] = selectedIdStop;
+    const { selectedStop, transportsForStopData, selectedMain, selectedIdtransport, selectedDestination, notificationValue, notificationValueChangue } = useContext(ContextHome);
+    const [selectedStopState, setSelectedStopState] = selectedStop;
     const [transportsForStopDataState, setTransportsForStopDataState] = transportsForStopData;
     const [loading, setLoading] = useState(true);
 
     const getNearbyTransports = async () => {
         const response = await GET(Api.nearby.selectedStop(
-            endPoint[0],
-            selectedIdStopState
+            selectedStopState.stopId
         ), "json")
 
         if (!response) {
@@ -37,7 +35,7 @@ export default function TransportsMain() {
 
     useEffect(() => {
         getNearbyTransports()
-    }, [selectedIdStopState])
+    }, [selectedStopState.stopId])
 
     if (loading) {
         return (<>
@@ -50,7 +48,7 @@ export default function TransportsMain() {
 
     if (!loading && transportsForStopDataState.length === 0) {
         return (<>
-            <Title>Transportes disponibles: {selectedIdStopState}</Title>
+            <Title>Transportes disponibles: {selectedStopState.stopId}</Title>
             <Empty
                 message='Lo sentimos no hay transportes que pasen por esta base'
                 description='Intente moverse seleccionar otra base'
@@ -66,7 +64,7 @@ export default function TransportsMain() {
                         <FontAwesome5 name="bus" size={20} color="#0d6cf2" />
                     </View>
                     <Text className="">
-                        Transportes #{selectedIdStopState}
+                        Transportes #{selectedStopState.stopId}
                     </Text>
                 </Text>
             </View>

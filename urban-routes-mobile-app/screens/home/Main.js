@@ -1,19 +1,18 @@
 import { View, Text, Pressable, ScrollView, BackHandler } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
-import { ContextHome } from '../../app/home/Context'
+import ContextHome from '../../app/home/Context'
 import TransportsMain from './components/main/TransportsMain';
 import Transport from './components/main/Transport';
 import dataMain from './components/main/mainData'
 import StopsMain from './components/main/StopsMain';
 import HiddenMenu from './components/main/buttons/HiddenMenu';
 import RestartMain from './components/main/buttons/RestartMain';
+import RouteToFacilty from './components/main/RouteToFacilty';
 
 export default function Main() {
    const { selectedMain, activeMenu } = useContext(ContextHome);
    const [selectedMainState, setSelectedMainState] = selectedMain;
    const [activeMenuState, setActiveMenuState] = activeMenu;
-
-   // useEffect(() => {}, [activeMenuState])
 
    return (
       <View className={`
@@ -47,6 +46,9 @@ const SelectedMainComponent = ({ selected }) => {
    }
    if (selected === dataMain.Transport) {
       return <View className="pb-96"><Transport /></View>
+   }
+   if (selected === dataMain.RouteToFacilty) {
+      return <View className="pb-96"><RouteToFacilty /></View>
    }
    else {
       return <View><Text>Error Menu no seleccionado</Text></View>

@@ -1,19 +1,17 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
-import { ContextHome } from '../../../../app/home/Context';
+import ContextHome from '../../../../app/home/Context';
 import Api from '../../../../services/api';
 import GET from '../../../../hooks/GET';
-import InformationInitial from './transport/InformationInitial';
+import InformationInitial, { InformationInitialSkeleton } from './transport/InformationInitial';
 import Pickers from './transport/Pickers';
 import Stops from './transport/Stops';
-import { ContextGlobal } from '../../../../app/ContextGlobal';
 
 export default function Transport() {
-   const { endPoint } = useContext(ContextGlobal)
-   const { selectedIdtransport, infoOfTransport, nearbyStopsData, selectedIdStop, selectedDestination, notificationValueChangue } = useContext(ContextHome);
+   const { selectedIdtransport, infoOfTransport, nearbyStopsData, selectedStop, selectedDestination, notificationValueChangue } = useContext(ContextHome);
    const [selectedIdtransportState, setSelectedIdtransportState] = selectedIdtransport;
    const [nearbyStopsDataState, setNearbyStopsDataState] = nearbyStopsData;
-   const [selectedIdStopState, setSelectedIdStopStateState] = selectedIdStop;
+   const [selectedStopState, setSelectedStopState] = selectedStop;
    const [selectedDestinationState, setSelectedDestinationState] = selectedDestination;
    const [data, setData] = infoOfTransport;
 
@@ -23,9 +21,8 @@ export default function Transport() {
 
    const getTransport = async () => {
       const responseTransport = await GET(Api.transport.getTransportBeetwenTwoStops(
-         endPoint[0],
          selectedIdtransportState,
-         selectedIdStopState,
+         selectedStopState.stopId,
          selectedDestinationState
       ), "json")
 
@@ -38,10 +35,10 @@ export default function Transport() {
       }
 
       const responseStopInitial = await GET(Api.stopRoutes.getStopRouteFromAndTo(
-         endPoint[0],
-         selectedIdStopState,
+         selectedStopState.stopId,
          selectedDestinationState
       ), "json")
+
 
       if (!responseStopInitial) {
          notificationValueChangue("No se pudo obtener las bases de stops del transporte seleccionado.")
@@ -63,7 +60,7 @@ export default function Transport() {
    }, [selectedIdtransportState])
 
    if (loading) {
-      return <Text>Cargando a #{selectedIdtransportState} Datos .. </Text>
+      return <InformationInitialSkeleton />
    }
 
    return (

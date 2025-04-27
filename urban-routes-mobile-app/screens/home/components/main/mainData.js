@@ -1,5 +1,6 @@
 export default {
     BusesMain: 'NearbyStops',
     Transport: 'Transport',
-    TransportsMain: 'Transports'
+    TransportsMain: 'Transports',
+    RouteToFacilty: 'RouteToFacilty',
 }

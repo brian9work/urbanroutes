@@ -2,7 +2,7 @@
 import { View, Pressable } from 'react-native'
 import React, { useContext } from 'react'
 import { FontAwesome, Octicons } from '@expo/vector-icons'
-import { ContextHome } from '../../../../../app/home/Context';
+import ContextHome from '../../../../../app/home/Context';
 import { Link, useRouter } from 'expo-router';
 
 export default function CloseMenuSearch() {

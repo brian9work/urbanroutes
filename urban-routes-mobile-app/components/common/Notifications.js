@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { View, Text, Animated, StyleSheet, Pressable } from 'react-native';
 import { AntDesign, Entypo, FontAwesome, Fontisto, Ionicons, MaterialCommunityIcons, Octicons } from '@expo/vector-icons'
-import { ContextHome } from '../../app/home/Context';
+import ContextHome from '../../app/home/Context';
 
 export const Notification = () => {
    const { notificationValue } = useContext(ContextHome);

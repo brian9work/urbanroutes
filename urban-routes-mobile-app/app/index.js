@@ -7,10 +7,10 @@ import GET from '../hooks/GET';
 import Api from '../services/api';
 import { useRouter } from 'expo-router';
 import STORAGE from '../hooks/STORAGE';
-import { ContextGlobal } from './ContextGlobal';
+import ContextGlobal from './ContextGlobal';
 
 export default function index() {
-    const { distance, endPoint } = useContext(ContextGlobal)
+    const { distance } = useContext(ContextGlobal)
     const router = useRouter();
     const [response, setResponse] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -31,14 +31,11 @@ export default function index() {
     }
 
     const verifyStorage = async () => {
-        const endPointStorage = await STORAGE.endPoint.get()
         const distanceStorage = await STORAGE.distance.get()
 
-        if (endPointStorage === 0 || distanceStorage === 0) {
-            STORAGE.endPoint.set("http://3.144.96.83/api")
+        if (distanceStorage === 0) {
             STORAGE.distance.set("500")
         } else {
-            endPoint[1](endPointStorage)
             distance[1](distanceStorage)
         }
     }

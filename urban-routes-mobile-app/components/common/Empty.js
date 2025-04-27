@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React, { useContext, useEffect } from 'react'
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
-import { ContextHome } from '../../app/home/Context';
+import ContextHome from '../../app/home/Context';
 
 export default function Empty({ message = "No hay resultados", description = "Por favor reintente la operacion de nuevo" }) {
    const { notificationValueChangue } = useContext(ContextHome);
