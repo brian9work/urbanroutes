@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StopRoutesService {
@@ -14,6 +15,13 @@ public class StopRoutesService {
     IStopRoutesRepository stopRoutesRepository;
 
     public StopRouteDTO getStopByStopFromAndStopTo(Long stopFrom, Long stopTo) {
+        List<Object[]> list = stopRoutesRepository.verifyTravelBetweenStops(stopFrom, stopTo);
+        int count = Integer.valueOf(String.valueOf(list.get(0)[0]));
+
+        if(count==0){
+            return new StopRouteDTO();
+        }
+
         StopRouteModel stopRouteModels = stopRoutesRepository.getByStopFromAndStopTo(stopFrom, stopTo).get(0);
 
         StopRouteDTO stopRouteDTO = new StopRouteDTO();
@@ -38,5 +46,10 @@ public class StopRoutesService {
 
     public StopRouteModel getStopByStopToAndStopFrom(Long stopTo, Long stopFrom) {
         return stopRoutesRepository.getByStopFromAndStopTo(stopFrom, stopTo).get(0);
+    }
+
+    public String verifyTravelBetweenStops(Long stopFrom, Long stopTo) {
+        List<Object[]> list = stopRoutesRepository.verifyTravelBetweenStops(stopFrom, stopTo);
+        return String.valueOf(list.get(0)[0]);
     }
 }

@@ -19,6 +19,11 @@ public interface IStopRoutesRepository extends JpaRepository<StopRouteModel, Lon
     @Query("SELECT sr FROM StopRouteModel sr WHERE sr.stopFrom.id = :stopFrom AND sr.stopTo.id = :stopTo ")
     List<StopRouteModel> getByStopFromAndStopTo(Long stopFrom, Long stopTo);
 
+    @Query(value = "SELECT COUNT(*) AS count FROM stop_routes " +
+            "WHERE stop_id_from = :stopFrom AND stop_id_to = :stopTo ",
+            nativeQuery = true)
+    List<Object[]> verifyTravelBetweenStops(Long stopFrom, Long stopTo);
+
     @Query("SELECT sr FROM StopRouteModel sr WHERE sr.stopFrom.id = :idStopFrom AND " +
             "sr.stopTo.id BETWEEN :idFirstStop AND :idEndStop " +
             " ORDER BY sr.id ASC")
@@ -45,6 +50,8 @@ public interface IStopRoutesRepository extends JpaRepository<StopRouteModel, Lon
     List<Object[]> getRoutesBeetwenTwoStops(
             @Param("origin") Long origin,
             @Param("destination") Long destination);
+
+
 
 
 }
