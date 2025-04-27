@@ -1,12 +1,11 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import ContextHome from '../../../../app/home/Context';
 import Api from '../../../../services/api';
 import GET from '../../../../hooks/GET';
-import InformationInitial from './transport/InformationInitial';
+import InformationInitial, { InformationInitialSkeleton } from './transport/InformationInitial';
 import Pickers from './transport/Pickers';
 import Stops from './transport/Stops';
-import ContextGlobal from '../../../../app/ContextGlobal';
 
 export default function Transport() {
    const { selectedIdtransport, infoOfTransport, nearbyStopsData, selectedStop, selectedDestination, notificationValueChangue } = useContext(ContextHome);
@@ -35,21 +34,11 @@ export default function Transport() {
          return
       }
 
-      console.log(Api.stopRoutes.getStopRouteFromAndTo(
-         selectedStopState.stopId,
-         selectedDestinationState
-      ))
-
       const responseStopInitial = await GET(Api.stopRoutes.getStopRouteFromAndTo(
          selectedStopState.stopId,
          selectedDestinationState
       ), "json")
 
-      console.log(
-         Api.stopRoutes.getStopRouteFromAndTo(
-         selectedStopState.stopId,
-         selectedDestinationState)
-      )
 
       if (!responseStopInitial) {
          notificationValueChangue("No se pudo obtener las bases de stops del transporte seleccionado.")
@@ -71,7 +60,7 @@ export default function Transport() {
    }, [selectedIdtransportState])
 
    if (loading) {
-      return <Text>Cargando a #{selectedIdtransportState} Datos .. </Text>
+      return <InformationInitialSkeleton />
    }
 
    return (
