@@ -8,6 +8,8 @@ import CloseMenuSearch from './components/main/buttons/CloseMenuSearch';
 import Api from '../../services/api';
 import dataMain from './components/main/mainData'
 import GET from '../../hooks/GET';
+import Reboot from './components/search/Reboot';
+import ComponentFacultades from './components/search/ComponentFacultades';
 
 export default function Search() {
     const { activeMenuSearch, location, originLocation, facultiesData, selectedMain, activeMenu } = useContext(ContextHome);
@@ -75,83 +77,19 @@ export default function Search() {
                     <Text className="text-app-secondary text-md">Selecciona una facultad para continuar</Text>
                 </View>
             </View>
-            {
-                loading ? <Text>Cargando Datos .. </Text> :
-                    <View className="w-11/12 mx-auto mt-5">
-                    <Reboot
-                        originLocation={originLocation}
-                        location={location}
-                        activeMenuSearch={activeMenuSearch}
-                    />
-                        {faculties.map((facultad, index) => {
-                            return (
-                                <ComponentFacultades
-                                    key={"facultad-" + index}
-                                    facultad={facultad}
-                                    location={location}
-                                    activeMenuSearch={activeMenuSearch}
-                                    selectedMain={selectedMain}
-                                    dataMain={dataMain.RouteToFacilty}
-                                    activeMenu={activeMenu}
-                                />
-                            )
-                        })}
-                    </View>
-            }
+            {loading ? <Text>Cargando Datos .. </Text> :
+                <View className="w-11/12 mx-auto mt-5">
+                    <Reboot />
+                    {faculties.map((facultad, index) => {
+                        return (
+                            <ComponentFacultades
+                                key={"facultad-" + index}
+                                facultad={facultad}
+                                dataMain={dataMain.RouteToFacilty}
+                            />
+                        )
+                    })}
+                </View>}
         </View>
-    )
-}
-
-const Reboot = ({ originLocation, location, activeMenuSearch }) => {
-    return (
-        <Pressable className="flex flex-row bg-white items-center mb-5 py-4 rounded-3xl border-2 border-gray-200"
-            onPressOut={() => {
-                location[1](originLocation[0])
-                activeMenuSearch[1](false)
-            }}
-        >
-            <View className="w-[20%] flex justify-center items-center">
-                <View className=" bg-app-primary/10 p-4 rounded-full">
-                    <Ionicons name="location-outline" size={28} color="#0d6cf2" />
-                </View>
-            </View>
-            <View className="w-[65%]">
-                <Text className="font-bold text-xl">My ubicacion</Text>
-            </View>
-            <View className="w-[15%] ">
-                <AntDesign name="arrowright" size={24} color="#333" />
-            </View>
-        </Pressable>
-    )
-}
-const ComponentFacultades = ({ facultad, location, activeMenuSearch, selectedMain, dataMain, activeMenu }) => {
-    return (
-        <Pressable className="flex flex-row bg-white items-center mb-2 py-4 rounded-3xl border-2 border-gray-200"
-            onPressOut={() => {
-                location[1]({
-                    latitude: parseFloat(facultad.latitude),
-                    longitude: parseFloat(facultad.longitude),
-                    distance: 500
-                })
-                activeMenuSearch[1](false)
-                activeMenu[1](false)
-                selectedMain[1](dataMain)
-            }}
-        >
-            <View className="w-[20%] flex justify-center items-center">
-                <View className=" bg-app-primary/10 p-4 rounded-full">
-                    <Ionicons name="school-outline" size={28} color="#0d6cf2" />
-                </View>
-            </View>
-            <View className="w-[65%]">
-                <Text className="font-bold text-xl">{facultad.name}</Text>
-                <View className="bg-app-primary/10 rounded-xl w-20 mt-2">
-                    <Text className="text-app-primary text-center text-sm ">{facultad.acronym}</Text>
-                </View>
-            </View>
-            <View className="w-[15%] ">
-                <AntDesign name="arrowright" size={24} color="#333" />
-            </View>
-        </Pressable>
     )
 }
