@@ -27,6 +27,13 @@ export default function Provider({ children }) {
    const selectedDestination = useState(0);
    const facultiesData = useState([]);
 
+   const originLocation = useState({
+      latitude: 19.41514082532041,
+      longitude: -98.14024764753933,
+      distance: 500,
+      accuracy: 0,
+   })
+
    const location = useState({
       latitude: 19.41514082532041,
       longitude: -98.14024764753933,
@@ -70,7 +77,8 @@ export default function Provider({ children }) {
 
          selectedStopSearchBeggin,
          selectedStopSearchEnd,
-
+         
+         originLocation,
          location,
 
          notificationValue,

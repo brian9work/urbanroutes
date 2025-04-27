@@ -6,7 +6,8 @@ import { Marker } from 'react-native-maps';
 import images from '../../../../constants/images';
 
 export default function MyLocation() {
-   const { location, notificationValueChangue } = useContext(ContextHome);
+   const { location, notificationValueChangue, originLocation } = useContext(ContextHome);
+   const [originLocationState, setOriginLocationState] = originLocation;
    const [locationState, setLocationState] = location;
 
    const getLocation = async () => {
@@ -25,25 +26,40 @@ export default function MyLocation() {
          accuracy: location.coords.accuracy,
       }
       setLocationState({
-         latitude: current.latitude,
-         longitude: current.longitude,
-         distance: current.distance,
+         // latitude: current.latitude,
+         // longitude: current.longitude,
+         // distance: current.distance,
+         latitude: 19.415401561402106,
+         longitude: -98.14000874533764,
+         distance: 500,
          accuracy: current.accuracy,
+      })
+      setOriginLocationState({
+         latitude: 19.415401561402106,
+         longitude: -98.14000874533764,
+         distance: 500,
+         accuracy: current.accuracy,
+         // latitude: current.latitude,
+         // longitude: current.longitude,
+         // distance: current.distance,
+         // accuracy: current.accuracy,
       })
    }
 
    useEffect(() => {
-      // getLocation()
+      getLocation()
    }, [])
 
    return (
       <Marker
          coordinate={{
-            latitude: locationState.latitude,
-            longitude: locationState.longitude,
+            latitude: originLocationState.latitude,
+            longitude: originLocationState.longitude,
          }}
          title='Mi ubicación'
-         // icon={images.icons.location}
+         onPress={() => {
+            setLocationState(originLocationState)
+         }}
       >
          <Image
             source={images.icons.location}

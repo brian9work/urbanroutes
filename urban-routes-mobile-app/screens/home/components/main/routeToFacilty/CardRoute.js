@@ -2,13 +2,12 @@ import { View, Text, Pressable } from 'react-native'
 import React, { useContext } from 'react'
 import { FontAwesome, FontAwesome6, MaterialCommunityIcons } from '@expo/vector-icons'
 import { ClockIcon, MoneyIcon, RouteIcon } from '../../../../../constants/Icons'
-import { PrimaryButton } from '../../../../../components/common/Buttom'
+import { DesignPrimaryButton } from '../../../../../components/common/Buttom'
 import ContextHome from '../../../../../app/home/Context'
 import dataMain from '../mainData'
 
 export default function CardRoute({ route, origin }) {
    const { selectedMain, selectedIdtransport, selectedDestination, selectedStop } = useContext(ContextHome);
-   console.log(origin)
 
    return (
       <Pressable className=" mt-5 bg-white rounded-3xl border-2 border-gray-200"
@@ -60,9 +59,9 @@ export default function CardRoute({ route, origin }) {
                </View>
             </View>
             <View className="mt-5">
-               <PrimaryButton>
+               <DesignPrimaryButton>
                   Seleccionar Ruta
-               </PrimaryButton>
+               </DesignPrimaryButton>
             </View>
          </View>
       </Pressable>

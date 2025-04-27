@@ -3,9 +3,10 @@ import React, { useContext } from 'react'
 import ContextHome from '../../../../app/home/Context';
 import images from '../../../../constants/images';
 import { Marker } from 'react-native-maps';
+import dataMain from '../../components/main/mainData'
 
 export default function NearbyStopsForFaculty() {
-   const { facultiesData } = useContext(ContextHome);
+   const { facultiesData, location, activeMenu, selectedMain } = useContext(ContextHome);
    const [facultiesDataState, setFacultiesDataState] = facultiesData;
     return (
         <>
@@ -22,6 +23,13 @@ export default function NearbyStopsForFaculty() {
                             title={faculty.acronym}
                             description={faculty.name}
                             onPress={() => {
+                                location[1]({
+                                    latitude: parseFloat(faculty.latitude),
+                                    longitude: parseFloat(faculty.longitude),
+                                    distance: 500
+                                })
+                                activeMenu[1](false)
+                                selectedMain[1](dataMain.RouteToFacilty)
                             }}
                         >
                             <Image

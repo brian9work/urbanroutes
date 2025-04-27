@@ -10,7 +10,7 @@ import dataMain from './components/main/mainData'
 import GET from '../../hooks/GET';
 
 export default function Search() {
-    const { activeMenuSearch, location, facultiesData, selectedMain, activeMenu } = useContext(ContextHome);
+    const { activeMenuSearch, location, originLocation, facultiesData, selectedMain, activeMenu } = useContext(ContextHome);
     const [activeMenuSearchState, setActiveMenuSearchState] = activeMenuSearch;
     const [faculties, setFaculties] = useState([]);
     const [facultiesDataState, setFacultiesDataState] = facultiesData;
@@ -79,6 +79,7 @@ export default function Search() {
                 loading ? <Text>Cargando Datos .. </Text> :
                     <View className="w-11/12 mx-auto mt-5">
                     <Reboot
+                        originLocation={originLocation}
                         location={location}
                         activeMenuSearch={activeMenuSearch}
                     />
@@ -101,16 +102,11 @@ export default function Search() {
     )
 }
 
-const Reboot = ({ location, activeMenuSearch }) => {
+const Reboot = ({ originLocation, location, activeMenuSearch }) => {
     return (
         <Pressable className="flex flex-row bg-white items-center mb-5 py-4 rounded-3xl border-2 border-gray-200"
             onPressOut={() => {
-                location[1]({
-                    latitude: 19.41514082532041,
-                    longitude: -98.14024764753933,
-                    distance: 1000,
-                    accuracy: 0,
-                })
+                location[1](originLocation[0])
                 activeMenuSearch[1](false)
             }}
         >
