@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ContextGlobal } from "./ContextGlobal";
+import ContextGlobal from "./ContextGlobal";
 
 export default function ProviderGlobal ({ children }) {
    const globalState = useState("");

@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
-import { ContextHome } from "./Context";
-import { ContextGlobal } from "../ContextGlobal";
+import ContextHome from "./Context";
 
 export default function Provider({ children }) {
    const selectedMain = useState("NearbyStops");

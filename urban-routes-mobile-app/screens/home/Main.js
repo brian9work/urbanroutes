@@ -1,6 +1,6 @@
 import { View, Text, Pressable, ScrollView, BackHandler } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
-import { ContextHome } from '../../app/home/Context'
+import ContextHome from '../../app/home/Context'
 import TransportsMain from './components/main/TransportsMain';
 import Transport from './components/main/Transport';
 import dataMain from './components/main/mainData'

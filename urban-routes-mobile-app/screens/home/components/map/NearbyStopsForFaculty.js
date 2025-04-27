@@ -1,6 +1,6 @@
 import { View, Text, Image } from 'react-native'
 import React, { useContext } from 'react'
-import { ContextHome } from '../../../../app/home/Context';
+import ContextHome from '../../../../app/home/Context';
 import images from '../../../../constants/images';
 import { Marker } from 'react-native-maps';
 

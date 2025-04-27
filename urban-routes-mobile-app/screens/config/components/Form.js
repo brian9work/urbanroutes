@@ -4,7 +4,7 @@ import { Picker } from '@react-native-picker/picker';
 import { Feather, MaterialCommunityIcons, Octicons } from '@expo/vector-icons';
 import { PrimaryButton } from '../../../components/common/Buttom';
 import STORAGE from '../../../hooks/STORAGE';
-import { ContextHome } from '../../../app/home/Context';
+import ContextHome from '../../../app/home/Context';
 import * as Location from 'expo-location';
 
 export default function Form() {

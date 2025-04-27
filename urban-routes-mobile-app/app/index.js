@@ -7,7 +7,7 @@ import GET from '../hooks/GET';
 import Api from '../services/api';
 import { useRouter } from 'expo-router';
 import STORAGE from '../hooks/STORAGE';
-import { ContextGlobal } from './ContextGlobal';
+import ContextGlobal from './ContextGlobal';
 
 export default function index() {
     const { distance } = useContext(ContextGlobal)

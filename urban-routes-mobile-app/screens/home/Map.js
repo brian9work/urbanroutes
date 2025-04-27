@@ -2,7 +2,7 @@ import { View, Text, Image, Alert } from 'react-native'
 import React, { useContext, useEffect } from 'react'
 import MapView, { Marker, Polygon, Polyline, PROVIDER_GOOGLE } from 'react-native-maps'
 import Dim from '../../constants/dimensions';
-import { ContextHome } from '../../app/home/Context';
+import ContextHome from '../../app/home/Context';
 import Empty from '../../components/common/Empty';
 import dataMain from './components/main/mainData'
 import images from '../../constants/images';

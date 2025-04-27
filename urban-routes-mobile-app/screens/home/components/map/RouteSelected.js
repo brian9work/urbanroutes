@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React, { useContext } from 'react'
 import { Polyline } from 'react-native-maps'
-import { ContextHome } from '../../../../app/home/Context';
+import ContextHome from '../../../../app/home/Context';
 
 export default function RouteSelected() {
     const { infoOfTransport } = useContext(ContextHome);

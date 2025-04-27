@@ -3,11 +3,12 @@ import React, { useContext } from 'react'
 import { FontAwesome, FontAwesome6, MaterialCommunityIcons } from '@expo/vector-icons'
 import { ClockIcon, MoneyIcon, RouteIcon } from '../../../../../constants/Icons'
 import { PrimaryButton } from '../../../../../components/common/Buttom'
-import { ContextHome } from '../../../../../app/home/Context'
+import ContextHome from '../../../../../app/home/Context'
 import dataMain from '../mainData'
 
 export default function CardRoute({ route, origin }) {
    const { selectedMain, selectedIdtransport, selectedDestination, selectedStop } = useContext(ContextHome);
+   console.log(origin)
 
    return (
       <Pressable className=" mt-5 bg-white rounded-3xl border-2 border-gray-200"
@@ -25,7 +26,7 @@ export default function CardRoute({ route, origin }) {
                <MaterialCommunityIcons name="bus-stop" size={24} color="#0d6cf2" />
             </View>
             <View className="w-full ">
-               <Text className=" font-semibold text-2xl">Desde: <Text className="text-app-primary ml-2">{origin.name}</Text>
+               <Text className=" font-semibold text-2xl">Desde: <Text className="text-app-primary ml-2">{origin.name} #{origin.stopId}</Text>
                </Text>
             </View>
          </View>

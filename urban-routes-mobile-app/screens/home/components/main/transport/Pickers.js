@@ -5,8 +5,8 @@ import { PrimaryButton } from '../../../../../components/common/Buttom';
 import PickerComponent from './PickerComponent';
 import GET from '../../../../../hooks/GET';
 import Api from '../../../../../services/api';
-import { ContextHome } from '../../../../../app/home/Context';
-import { ContextGlobal } from '../../../../../app/ContextGlobal';
+import ContextHome from '../../../../../app/home/Context';
+import ContextGlobal from '../../../../../app/ContextGlobal';
 
 export default function Pickers({ stops }) {
    const { notificationValueChangue, selectedStopSearchBeggin, selectedStopSearchEnd } = useContext(ContextHome);

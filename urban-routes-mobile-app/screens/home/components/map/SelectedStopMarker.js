@@ -1,7 +1,7 @@
 import { View, Text, Image } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { Marker } from 'react-native-maps'
-import { ContextHome } from '../../../../app/home/Context';
+import ContextHome from '../../../../app/home/Context';
 import images from '../../../../constants/images';
 
 export default function SelectedStopMarker() {

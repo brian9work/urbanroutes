@@ -1,8 +1,8 @@
 import { View, Text, TextInput, Pressable } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { ContextHome } from '../../app/home/Context';
-import { ContextGlobal } from '../../app/ContextGlobal';
+import ContextHome from '../../app/home/Context';
+import ContextGlobal from '../../app/ContextGlobal';
 import { AntDesign, FontAwesome5, FontAwesome6, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import CloseMenuSearch from './components/main/buttons/CloseMenuSearch';
 import Api from '../../services/api';

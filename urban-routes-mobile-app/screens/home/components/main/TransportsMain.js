@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
-import { ContextHome } from '../../../../app/home/Context';
+import ContextHome from '../../../../app/home/Context';
 import Api from '../../../../services/api';
 import GET from '../../../../hooks/GET';
 import Title from '../../../../components/common/Title';
@@ -8,7 +8,7 @@ import Empty from '../../../../components/common/Empty';
 import TransportStop from './transportMain/TransportStop';
 import Skeleton from './transportMain/Skeleton';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { ContextGlobal } from '../../../../app/ContextGlobal';
+import ContextGlobal from '../../../../app/ContextGlobal';
 
 export default function TransportsMain() {
     const { selectedStop, transportsForStopData, selectedMain, selectedIdtransport, selectedDestination, notificationValue, notificationValueChangue } = useContext(ContextHome);

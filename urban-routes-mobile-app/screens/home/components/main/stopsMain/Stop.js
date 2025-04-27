@@ -1,7 +1,7 @@
 import { View, Text, Pressable } from 'react-native'
 import React, { useContext } from 'react'
 import dataMain from '../mainData'
-import { ContextHome } from '../../../../../app/home/Context';
+import ContextHome from '../../../../../app/home/Context';
 import { AntDesign, Feather, FontAwesome5 } from '@expo/vector-icons';
 
 export default function Stop({ stop }) {

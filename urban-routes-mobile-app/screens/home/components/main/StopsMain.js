@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
-import { ContextHome } from '../../../../app/home/Context';
+import ContextHome from '../../../../app/home/Context';
 import Api from '../../../../services/api'
 import GET from '../../../../hooks/GET'
 import Empty from '../../../../components/common/Empty';
@@ -8,7 +8,7 @@ import Title from '../../../../components/common/Title';
 import Skeleton from './stopsMain/Skeleton';
 import Stop from './stopsMain/Stop';
 import { FontAwesome6 } from '@expo/vector-icons';
-import { ContextGlobal } from '../../../../app/ContextGlobal';
+import ContextGlobal from '../../../../app/ContextGlobal';
 
 export default function StopsMain() {
    const { nearbyStopsData, notificationValueChangue, location } = useContext(ContextHome);

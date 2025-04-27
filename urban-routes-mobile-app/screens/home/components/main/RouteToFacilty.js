@@ -3,8 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import CardRoute from './routeToFacilty/CardRoute'
 import GET from '../../../../hooks/GET'
 import Api from '../../../../services/api'
-import { ContextGlobal } from '../../../../app/ContextGlobal'
-import { ContextHome } from '../../../../app/home/Context'
+import ContextHome from '../../../../app/home/Context'
 import Skeleton from './routeToFacilty/Skeleton'
 
 export default function RouteToFacilty() {
@@ -16,6 +15,7 @@ export default function RouteToFacilty() {
     const [loading, setLoading] = useState(true);
 
     const getRoute = async () => {
+        console.log("*****************")
         console.log(selectedStop)
 
         const nearbyStop = await GET(Api.nearby.stops(
@@ -31,11 +31,18 @@ export default function RouteToFacilty() {
             500,
         ), "json")
 
+        console.log(nearbyStop)
+        console.log(nearbyFaculty)
+
         let Route = await GET(Api.transport.getRouteForFaculty(
             nearbyStop[0].stopId,
             nearbyFaculty[0].stopId
         ), "json")
-            let i = 1
+
+        console.log(Route)
+        
+        
+        let i = 1
         while (Route.length===0) {
             console.warn(i)
             i++;

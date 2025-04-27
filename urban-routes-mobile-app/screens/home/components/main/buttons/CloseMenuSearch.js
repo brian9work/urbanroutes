@@ -2,7 +2,7 @@
 import { View, Pressable } from 'react-native'
 import React, { useContext } from 'react'
 import { FontAwesome } from '@expo/vector-icons'
-import { ContextHome } from '../../../../../app/home/Context';
+import ContextHome from '../../../../../app/home/Context';
 
 export default function CloseMenuSearch() {
     const { activeMenuSearch } = useContext(ContextHome);

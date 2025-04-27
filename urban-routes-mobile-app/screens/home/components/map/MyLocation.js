@@ -1,7 +1,7 @@
 import { View, Text, Image, Alert } from 'react-native'
 import React, { useContext, useEffect } from 'react'
 import *  as Location from 'expo-location';
-import { ContextHome } from '../../../../app/home/Context';
+import ContextHome from '../../../../app/home/Context';
 import { Marker } from 'react-native-maps';
 import images from '../../../../constants/images';
 
