@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Input({label="label", placeholder="placeholder", password=false}) {
     return (
-        <View className="w-10/12 mx-auto mt-5">
+        <View className="w-10/12 mx-auto mt-2">
             <Text className="text-white text-xl" >{label}</Text>
             <TextInput
                 secureTextEntry={password}
