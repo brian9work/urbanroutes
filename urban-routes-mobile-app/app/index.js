@@ -24,7 +24,7 @@ export default function index() {
             setLoading(true)
         }
 
-        if(response.priority==="4") router.push("/home")
+        if(response.priority==="4") router.push("/auth/")
 
         setResponse(response)
         setLoading(true)
